@@ -1,0 +1,29 @@
+{
+  "images": [
+    {
+      "title": "Title 1",
+      "description": "Description 1",
+      "image": "https://www.tastefullyoffensive.com/wp-content/uploads/2020/11/if-youre-looking-for-wtf-stock-photos-youve-come-to-the-right-place-110-pics-62.jpg"
+    },
+    {
+      "title": "Title 2",
+      "description": "Description 2",
+      "image": "https://i.pinimg.com/originals/ac/7a/83/ac7a836acfc13ea11be8717d9e6ef8f9.png"
+    },
+    {
+      "title": "Title 3",
+      "description": "Description 3",
+      "image": "https://strayfawnstudio.com/community/uploads/monthly_2022_05/funny-weird-wtf-stock-photos-34-5a3bcf43ca498__700.jpg.40aead11b4025647cc6b82596cdcf4e2.jpg"
+    },
+    {
+      "title": "Title 4",
+      "description": "Description 4",
+      "image": "https://mitchteemley.files.wordpress.com/2020/06/5aaa1cc237f6e-funny-weird-wtf-stock-photos-2-5a3913b06dabd__700.jpg?w=700"
+    },
+    {
+      "title": "Title 5",
+      "description": "Description 5",
+      "image": "https://static.boredpanda.com/blog/wp-content/uploads/2020/12/5fec2ae664dad_bs9suwod5g611__700.jpg"
+    }
+  ]
+}
