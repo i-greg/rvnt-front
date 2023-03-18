@@ -1,11 +1,11 @@
 package com.example.rvnt_front
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
@@ -19,11 +19,22 @@ class ViewPagerAdapter (private var title : List<String>, private var details : 
         val itemTitle: TextView = itemView.findViewById(R.id.tvTitle)
         val itemImage: ImageView = itemView.findViewById(R.id.ivImage)
 
+
         init {
 
+            val intent = Intent(itemView.context, TestActivity::class.java)
+
+
             itemImage.setOnClickListener {
+
+                //Getting current position
                 val position: Int = adapterPosition
-                Toast.makeText(itemView.context, "you clicked on item #${title[position]}", Toast.LENGTH_SHORT).show()
+
+                intent.putExtra("key", details[position])
+                itemView.context.startActivity(intent)
+
+                //Toast.makeText(itemView.context, "you clicked on item #${details[position]}", Toast.LENGTH_SHORT).show()
+
 
             }
         }

@@ -1,10 +1,9 @@
 package com.example.rvnt_front
 
+import android.content.Intent
 import android.text.TextUtils
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import android.widget.SearchView
+import android.widget.*
 import com.example.rvnt_front.databinding.ActivityHomeBinding
 
 class SearchHelper(private val searchView: SearchView, private val suggestionListView: ListView,
@@ -48,6 +47,29 @@ class SearchHelper(private val searchView: SearchView, private val suggestionLis
             }
 
         })
+
+        suggestionListView.onItemClickListener = AdapterView.OnItemClickListener {
+
+                adapterView, view, position, id ->
+
+            val selectedItem = adapterView.getItemAtPosition(position) as String
+            val itemposition = adapterView.getItemIdAtPosition(position)
+
+
+            //to display a message once the item in list is clicked
+            Toast.makeText(
+                searchView.context,
+                "You have clicked $selectedItem at position $itemposition",
+                Toast.LENGTH_LONG
+            ).show()
+
+
+            //to open a new activity when item in a list is clicked
+            val intent = Intent(suggestionListView.context, TestActivity::class.java)
+            intent.putExtra("key", selectedItem)
+            suggestionListView.context.startActivity(intent)
+
+        }
 
     }
 
