@@ -26,7 +26,7 @@ class CarouselHelper(private val viewPager2: ViewPager2, private val binding: Ac
 
     fun setupCarousel() {
 
-        //Adding carousel data to lists
+        //Adding carousel data to lists from json (now) need API response (future)
         postToCarouselList()
 
         //Setting viewpager
@@ -37,7 +37,7 @@ class CarouselHelper(private val viewPager2: ViewPager2, private val binding: Ac
         val indicator = binding.indicator
         indicator.setViewPager(viewPager2)
 
-        // Schedule auto scrolling
+        //Schedule auto scrolling
         runnable = Runnable {
             if (isAutoScrolling) {
                 viewPager2.currentItem = (viewPager2.currentItem + 1) % viewPager2.adapter!!.itemCount
@@ -63,6 +63,7 @@ class CarouselHelper(private val viewPager2: ViewPager2, private val binding: Ac
     }
 
     private fun postToCarouselList() {
+        //need to get data from HomeActivity!!!!! probably :/
         val jsonFileString = binding.root.context.assets.open("imagedata.json").bufferedReader().use { it.readText() }
         val imageResponse = Gson().fromJson(jsonFileString, ImageResponse::class.java)
 

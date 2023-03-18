@@ -2,8 +2,10 @@ package com.example.rvnt_front
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.rvnt_front.databinding.ActivityHomeBinding
-
+import org.json.JSONObject
 
 
 class HomeActivity : AppCompatActivity() {
@@ -11,6 +13,10 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
     private lateinit var carouselHelper: CarouselHelper
     private lateinit var searchHelper: SearchHelper
+    private var recyclerView: RecyclerView? = null
+    private var cardViewAdapter: CardViewAdapter? = null
+    private var eventList = mutableListOf<CardViewAdapter.Event>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,9 +24,26 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        carouselHelper = CarouselHelper(viewPager2 = binding.viewPager2, binding = binding)
+        setupCarousel()
+        setupSearch()
+        setupCard()
 
+    }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // Stop auto scrolling when the activity is destroyed
+        carouselHelper.stopAutoScrolling()
+
+    }
+
+    private fun setupCarousel(){
+        carouselHelper = CarouselHelper(viewPager2 = binding.viewPager2, binding = binding)
         carouselHelper.setupCarousel()
+    }
+
+    private fun setupSearch(){
 
         //Dummy data for search functionality
         val cities = arrayOf(
@@ -33,23 +56,48 @@ class HomeActivity : AppCompatActivity() {
             "Istanbul, Turkey", "Cairo, Egypt", "Seoul, South Korea"
         )
 
-        val searchView = binding.searchView
-        val suggestionListView = binding.lvSuggestions
-
         searchHelper = SearchHelper(
-            searchView = searchView,
-            suggestionListView = suggestionListView,
+            searchView = binding.searchView,
+            suggestionListView = binding.lvSuggestions,
             suggestionData = cities,
             binding = binding
         )
+    }
+
+    private fun setupCard(){
+        //CardView Functionality
+        eventList = ArrayList()
+
+        prepareEventListData()
+
+        recyclerView = binding.rvCard
+        cardViewAdapter = CardViewAdapter(this@HomeActivity, eventList)
+        val layoutManager : RecyclerView.LayoutManager = GridLayoutManager(this, 2)
+        recyclerView!!.layoutManager = layoutManager
+        recyclerView!!.adapter = cardViewAdapter
+
 
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        // Stop auto scrolling when the activity is destroyed
-        carouselHelper.stopAutoScrolling()
+    private fun prepareEventListData() {
+
+        val jsonFileString = binding.root.context.assets.open("dummy_db.json").bufferedReader().use { it.readText() }
+        val jsonObject = JSONObject(jsonFileString)
+        val eventsArray = jsonObject.getJSONArray("Events")
+
+        for (item in 0 until eventsArray.length()) {
+            val eventObject = eventsArray.getJSONObject(item)
+            val eventName = eventObject.getString("title")
+            val imageUrl = eventObject.getString("img")
+            val event = CardViewAdapter.Event(eventName, imageUrl)
+
+            eventList.add(event)
+        }
+
+        //cardViewAdapter!!.notifyDataSetChanged()
 
     }
 }
+
+
 
