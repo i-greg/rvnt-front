@@ -1,0 +1,69 @@
+{
+  "Events": [
+    {
+      "event_id": "1",
+      "title": "This music event",
+      "img": "https://billetto.co.uk/blog/wp-content/uploads/2019/06/zhqczjr9fho-e1560853535167-800x440.jpg",
+      "timestamp": "1682428276",
+      "location": "Thessaloniki",
+      "location_id": "1",
+      "ticket_price": "30",
+      "tickets_remaining": "100",
+      "times_clicked": "50",
+      "description": "this is a music event with a band that plays music",
+      "category": "concert"
+    },
+    {
+      "event_id": "2",
+      "title": "This theatre play",
+      "img": "https://frenchbien.com/wp-content/uploads/2018/07/theater.jpg",
+      "timestamp": "1682428276",
+      "location": "Athens",
+      "location_id": "2",
+      "ticket_price": "25",
+      "tickets_remaining": "300",
+      "times_clicked": "40",
+      "description": "this is a theatrical play where people pretend to be other people",
+      "category": "theatre"
+    },
+    {
+      "event_id": "3",
+      "title": "This football match",
+      "img": "https://www.sfina.gr/wp-content/uploads/2020/02/paok-filathloi-toumpa-500.jpg",
+      "timestamp": "1682428276",
+      "location": "Thessaloniki",
+      "location_id": "1",
+      "ticket_price": "20",
+      "tickets_remaining": "1000",
+      "times_clicked": "60",
+      "description": "this is a football match where 22 people kick a ball",
+      "category": "football match"
+    },
+    {
+      "event_id": "4",
+      "title": "This stand up comedy",
+      "img": "https://www.agriniopress.gr/wp-content/uploads/2019/12/mathioudakis-theodoropoulos-3.jpg",
+      "timestamp": "1682428276",
+      "location": "Larisa",
+      "location_id": "3",
+      "ticket_price": "15",
+      "tickets_remaining": "500",
+      "times_clicked": "150",
+      "description": "this is a stand up comedy session where a person makes other people laugh",
+      "category": "stand up comedy"
+    },
+    {
+      "event_id": "5",
+      "title": "This talk",
+      "img": "https://speakupforsuccess.com/wp-content/uploads/2014/03/Susan-Cain-Speaking-at-TED-1024x682.jpg",
+      "timestamp": "1682428276",
+      "location": "Volos",
+      "location_id": "4",
+      "ticket_price": "10",
+      "tickets_remaining": "300",
+      "times_clicked": "30",
+      "description": "this is a talk where a person talks and other people listen",
+      "category": "talks/conferences"
+    }
+  ]
+}
