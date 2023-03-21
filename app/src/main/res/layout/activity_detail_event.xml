@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,7 +13,7 @@
     <ImageView
         android:id="@+id/imageEvent"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="200dp"
         android:contentDescription="@android:string/untitled"
         app:circularflow_radiusInDP="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,7 +34,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageEvent"
         tools:text="Event Title"
-        tools:textSize="24sp" />
+        tools:textSize="50sp" />
 
     <!-- A small calendar icon for event's date-->
     <ImageView
@@ -45,22 +46,81 @@
         app:layout_constraintTop_toBottomOf="@+id/eventTitle"
         app:srcCompat="@drawable/ic_calendar_foreground" />
 
+    <!-- A text view for event's date-->
     <TextView
         android:id="@+id/eventDate"
         android:layout_width="wrap_content"
         android:layout_height="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="16dp"
         android:autoSizeTextType="uniform"
+        android:textColor="#5F5F63"
         app:layout_constraintStart_toEndOf="@+id/calendarImage"
         app:layout_constraintTop_toBottomOf="@+id/eventTitle"
-        tools:text="Event Date" />
+        tools:text="Event Date"
+        tools:textSize="14sp" />
 
+    <!--A small location icon for event's location-->
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/locationImage"
         android:layout_width="38dp"
         android:layout_height="39dp"
-        app:srcCompat="@drawable/ic_location_foreground"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="247dp" />
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarImage"
+        app:srcCompat="@drawable/ic_location_foreground" />
+
+    <!-- A text view for event's location-->
+    <TextView
+        android:id="@+id/eventLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:layout_marginTop="20dp"
+        android:autoSizeTextType="uniform"
+        app:layout_constraintStart_toEndOf="@+id/locationImage"
+        app:layout_constraintTop_toBottomOf="@+id/eventDate"
+        tools:text="Event Location"
+        tools:textSize="14sp" />
+
+    <!--A text component for description title -->
+    <TextView
+        android:id="@+id/Description"
+        android:layout_width="175dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="23dp"
+        android:text="Description"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locationImage"
+        tools:textSize="20sp" />
+
+    <!--A text component for event's description -->
+    <TextView
+        android:id="@+id/eventDescription"
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="7dp"
+        android:autoSizeTextType="uniform"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Description"
+        tools:text="Event's Description"
+        tools:textSize="14sp"/>
+
+    <!--A button Component for booking tickets  -->
+    <Button
+        android:id="@+id/bookTickets"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="158dp"
+        android:layout_marginEnd="158dp"
+        android:layout_marginBottom="60dp"
+        android:backgroundTint="#F57C00"
+        android:clickable="true"
+        android:contextClickable="true"
+        android:text="Book Tickets"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
