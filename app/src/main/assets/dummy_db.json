@@ -14,7 +14,8 @@
       "times_clicked": "50",
       "description": "this is a music event with a band that plays music",
       "category": "concert",
-      "category_id": "1"
+      "category_id": "1",
+      "category_img": "https://billetto.co.uk/blog/wp-content/uploads/2019/06/zhqczjr9fho-e1560853535167-800x440.jpg"
     },
     {
       "event_id": "2",
@@ -30,7 +31,8 @@
       "times_clicked": "40",
       "description": "this is a theatrical play where people pretend to be other people",
       "category": "theatre",
-      "category_id": "2"
+      "category_id": "2",
+      "category_img": "https://frenchbien.com/wp-content/uploads/2018/07/theater.jpg"
     },
     {
       "event_id": "3",
@@ -46,7 +48,8 @@
       "times_clicked": "60",
       "description": "this is a football match where 22 people kick a ball",
       "category": "football match",
-      "category_id": "3"
+      "category_id": "3",
+      "category_img": "https://www.sfina.gr/wp-content/uploads/2020/02/paok-filathloi-toumpa-500.jpg"
     },
     {
       "event_id": "4",
@@ -62,7 +65,8 @@
       "times_clicked": "150",
       "description": "this is a stand up comedy session where a person makes other people laugh",
       "category": "stand up comedy",
-      "category_id": "4"
+      "category_id": "4",
+      "category_img": "https://www.agriniopress.gr/wp-content/uploads/2019/12/mathioudakis-theodoropoulos-3.jpg"
     },
     {
       "event_id": "5",
@@ -78,7 +82,8 @@
       "times_clicked": "30",
       "description": "this is a talk where a person talks and other people listen",
       "category": "talks/conferences",
-      "category_id": "5"
+      "category_id": "5",
+      "category_img": "https://speakupforsuccess.com/wp-content/uploads/2014/03/Susan-Cain-Speaking-at-TED-1024x682.jpg"
     }
   ]
 }
