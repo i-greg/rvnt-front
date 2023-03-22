@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/white">
 
         <ImageView
             android:src="@mipmap/ic_launcher_round"
@@ -24,7 +25,7 @@
             android:contentDescription="TODO" />
 
         <TextView
-            android:textColor="@color/black"
+            android:textColor="#F57C00"
             android:padding="5dp"
             android:layout_margin="5dp"
             android:textSize="16sp"
