@@ -24,7 +24,7 @@
     <!-- Create a TextView for event's title-->
     <TextView
         android:id="@+id/eventTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="375dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
@@ -81,13 +81,35 @@
         tools:text="Event Location"
         tools:textSize="14sp" />
 
+    <!-- An image icon for event's category -->
+    <ImageView
+        android:id="@+id/categoryImage"
+        android:layout_width="38dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locationImage"
+        app:srcCompat="@drawable/category_button_foreground" />
+
+    <!-- A text view for event's location-->
+    <TextView
+        android:id="@+id/eventCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:layout_marginTop="25dp"
+        android:autoSizeTextType="uniform"
+        app:layout_constraintStart_toEndOf="@+id/categoryImage"
+        app:layout_constraintTop_toBottomOf="@+id/eventLocation"
+        tools:text="Event Category"
+        tools:textSize="14sp" />
+
     <!--A text component for description title -->
     <TextView
         android:id="@+id/Description"
         android:layout_width="175dp"
         android:layout_height="25dp"
         android:layout_marginStart="14dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="60dp"
         android:text="Description"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
@@ -107,7 +129,8 @@
         tools:text="Event's Description"
         tools:textSize="14sp"/>
 
-    <!--A button Component for booking tickets  -->
+    <!--A button Component for booking tickets.
+    Button click navigates to BookTickets UI.  -->
     <Button
         android:id="@+id/bookTickets"
         android:layout_width="150dp"
@@ -118,9 +141,11 @@
         android:backgroundTint="#F57C00"
         android:clickable="true"
         android:contextClickable="true"
-        android:text="Book Tickets"
+        android:text="@string/book_tickets"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

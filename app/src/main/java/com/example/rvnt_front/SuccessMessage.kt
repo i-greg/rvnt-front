@@ -1,21 +1,18 @@
 package com.example.rvnt_front
 
-/* A UI for event's detail*/
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.rvnt_front.databinding.ActivityDetailEventBinding
 import com.bumptech.glide.Glide
+import com.example.rvnt_front.databinding.ActivitySuccessMessageBinding
 
-class DetailEventActivity : AppCompatActivity() {
+class SuccessMessage : AppCompatActivity() {
 
-    private lateinit var binding: ActivityDetailEventBinding
+    private lateinit var binding: ActivitySuccessMessageBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDetailEventBinding.inflate(layoutInflater)
+        binding = ActivitySuccessMessageBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
     }
 }
-
-

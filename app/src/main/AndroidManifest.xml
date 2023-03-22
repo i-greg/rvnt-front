@@ -19,9 +19,9 @@
             android:name=".DetailEventActivity"
             android:exported="true" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.DETAILEVENTACTIVITY" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+               <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             </intent-filter>
         </activity>
 
@@ -29,7 +29,19 @@
             android:name=".BookTicketsActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.BOOKtICKETSACTIVITY" />
+                <action android:name="android.intent.action.BOOKTICKETSACTIVITY" />
+
+                <!--<category android:name="android.intent.category.LAUNCHER" /> -->
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".SuccessMessage"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <!--<category android:name="android.intent.category.LAUNCHER" /> -->
             </intent-filter>
         </activity>
 
