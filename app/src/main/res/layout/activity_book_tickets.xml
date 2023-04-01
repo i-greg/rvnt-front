@@ -5,32 +5,81 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- A ListView for the available event's dates-->
     <ListView
         android:id="@+id/datesList"
         android:layout_width="wrap_content"
-        android:layout_height="380dp"
+        android:layout_height="370dp"
         android:layout_marginStart="26dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="25dp"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth="360dp"
-        />
+        app:layout_constraintWidth="360dp" />
 
     <!-- A button where the user can proceed with the ticket's payment
      through his email.-->
+
+    <TextView
+        android:id="@+id/ticketsNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="40dp"
+        android:text="Booking Tickets:"
+        android:textColor="@color/app_orange"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.538" />
+
+    <!-- A Num-->
+    <NumberPicker
+        android:id="@+id/ticketsNumberPicker"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="100dp"
+        android:theme="@style/appColorTheme"
+        android:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.576"
+        app:layout_constraintStart_toEndOf="@+id/ticketsNumber"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.551" />
+
+    <!-- An EditText for user's full name -->
+    <EditText
+        android:id="@+id/editFullName"
+        android:layout_width="240dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="190dp"
+        android:backgroundTint="@color/app_orange"
+        android:inputType="text"
+        android:text="Full Name"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- A button for tickets book-->
     <Button
-        android:id="@+id/sendEmailButton"
+        android:id="@+id/bookTicketButton"
         android:layout_width="170dp"
         android:layout_height="60dp"
         android:layout_marginStart="20dp"
-        android:layout_marginBottom="125dp"
-        android:backgroundTint="@color/white"
-        android:clickable="true"
-        android:text="Send email"
-        android:textColor="#F57C00"
-        android:textSize="18dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/app_orange"
+        android:enabled="false"
+        android:text="Book"
+        android:textColor="#ffffff"
+        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -40,13 +89,79 @@
         android:layout_width="200dp"
         android:layout_height="60dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="125dp"
-        android:backgroundTint="#F57C00"
-        android:clickable="true"
-        android:text="Cancel Tickets"
-        android:textColor="@color/white"
-        android:textSize="18dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="#ffffff"
+        android:text="Cancel"
+        android:textColor="@color/app_orange"
+        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <!--
+    <! A textView for FullName-
+    <TextView
+        android:id="@+id/fullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="67dp"
+        android:text="Full Name"
+        android:textColor="@color/app_orange"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ticketsNumber" />
+    -->
+    <!-- An EditText for user's Email -->
+    <EditText
+        android:id="@+id/editEmail"
+        android:layout_width="240dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="120dp"
+        android:backgroundTint="@color/app_orange"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:text="E-mail"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <!-- A person icon-->
+    <ImageView
+        android:id="@+id/personImage"
+        android:layout_width="49dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="180dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/editFullName"
+        app:srcCompat="@drawable/name_icon_foreground" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/editEmail"
+        app:srcCompat="@drawable/email_icon_foreground" />
+
+    <!-- A textView for Email Address
+    <TextView
+        android:id="@+id/emailText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="35dp"
+        android:text="E-mail"
+        android:textColor="@color/app_orange"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/bookTicketButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fullName" />
+    -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

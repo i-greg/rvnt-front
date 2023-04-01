@@ -5,11 +5,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/bookEventCard"
     android:layout_width="360dp"
-    android:layout_height="175dp"
+    android:layout_height="170dp"
     android:layout_gravity="center_horizontal"
     android:layout_margin="5dp"
     android:padding="5dp"
-    app:cardBackgroundColor="@color/white"
+    app:cardBackgroundColor="#FFFFFF"
     app:cardCornerRadius="15dp">
 
     <LinearLayout
@@ -41,10 +41,13 @@
             android:layout_margin="0dp"
             android:layout_marginTop="0dp"
             android:autoSizeTextType="uniform"
+            android:textColor="@color/app_orange"
             android:text="Time"
             android:textAlignment="center" />
 
         <!-- A textView for event's place-->
+
+        <!-- A textView for ticket's price-->
         <TextView
             android:id="@+id/eventPlace"
             android:layout_width="wrap_content"
@@ -58,7 +61,6 @@
             android:textSize="16dp"
             android:textStyle="bold|italic" />
 
-        <!-- A textView for ticket's price-->
         <TextView
             android:id="@+id/ticketPrice"
             android:layout_width="wrap_content"
@@ -75,7 +77,8 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:backgroundTint="@color/white"/>
+            android:backgroundTint="@color/white"
+            android:theme="@style/appColorTheme"/>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>
