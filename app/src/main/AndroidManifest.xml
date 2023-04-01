@@ -63,7 +63,8 @@
 
         <activity
             android:name=".results.DisplayResultsActivity"
-            android:exported="true"/>
+            android:exported="false"/>
+
 
 
 
