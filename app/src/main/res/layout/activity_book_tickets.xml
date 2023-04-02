@@ -37,7 +37,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.538" />
 
-    <!-- A Num-->
+    <!-- A NumberPicker for ticket's number-->
     <NumberPicker
         android:id="@+id/ticketsNumberPicker"
         android:layout_width="wrap_content"
@@ -76,7 +76,6 @@
         android:layout_marginStart="20dp"
         android:layout_marginBottom="10dp"
         android:backgroundTint="@color/app_orange"
-        android:enabled="false"
         android:text="Book"
         android:textColor="#ffffff"
         android:textSize="25dp"
@@ -97,21 +96,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!--
-    <! A textView for FullName-
-    <TextView
-        android:id="@+id/fullName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="67dp"
-        android:text="Full Name"
-        android:textColor="@color/app_orange"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ticketsNumber" />
-    -->
+
     <!-- An EditText for user's Email -->
     <EditText
         android:id="@+id/editEmail"
@@ -147,21 +132,6 @@
         app:layout_constraintEnd_toStartOf="@+id/editEmail"
         app:srcCompat="@drawable/email_icon_foreground" />
 
-    <!-- A textView for Email Address
-    <TextView
-        android:id="@+id/emailText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="35dp"
-        android:text="E-mail"
-        android:textColor="@color/app_orange"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/bookTicketButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fullName" />
-    -->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

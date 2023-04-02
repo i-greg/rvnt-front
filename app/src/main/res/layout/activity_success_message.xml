@@ -4,15 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/app_orange">
+    android:orientation="vertical"
+    android:background="@drawable/message_shape"
+    >
 
     <!-- A TextView Component for success ticket's reservation -->
     <TextView
         android:id="@+id/successMessage"
-        android:layout_width="400dp"
+        android:layout_width="340dp"
         android:layout_height="70dp"
         android:layout_marginStart="176dp"
-        android:layout_marginTop="270dp"
+        android:layout_marginTop="290dp"
         android:layout_marginEnd="177dp"
         android:autoSizeTextType="uniform"
         android:text="Your ticket reservation has been successfully registered."
@@ -40,16 +42,18 @@
     <!-- A textView to inform for payment email -->
     <TextView
         android:id="@+id/paymentMessage"
-        android:layout_width="350dp"
+        android:layout_width="300dp"
         android:layout_height="70dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="82dp"
         android:layout_marginEnd="25dp"
+        android:layout_marginBottom="200dp"
         android:autoSizeTextType="uniform"
-        android:text="To complete your booking you will be sent an e-mail, where you can proceed with the payment of your tickets"
+        android:text="To complete your booking you will be sent an e-mail, where you can proceed with the payment of your tickets."
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/successMessage" />
