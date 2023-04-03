@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="app_blue">#FF00BCD4</color>
     <color name="app_orange">#F57C00</color>
+    <color name="rounded_white_button">#FFFFFF</color>
+    <color name="rounded_orange_button">#F57C00</color>
 </resources>

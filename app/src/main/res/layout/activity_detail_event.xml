@@ -35,7 +35,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageEvent"
         tools:text="Event Title"
-        tools:textSize="50sp" />
+        tools:textSize="70dp" />
 
     <!-- A small calendar icon for event's date-->
     <ImageView
@@ -133,20 +133,22 @@
     <!--A button Component for booking tickets.
     Button click navigates to BookTickets UI.  -->
     <Button
-        android:id="@+id/bookTickets"
+        android:id="@+id/tickets"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="158dp"
         android:layout_marginEnd="158dp"
         android:layout_marginBottom="60dp"
-        android:backgroundTint="#F57C00"
+        android:backgroundTint="@color/app_orange"
         android:clickable="true"
         android:contextClickable="true"
-        android:text="@string/book_tickets"
+        android:text="Tickets"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintStart_toStartOf="parent"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textColor="@color/white" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
