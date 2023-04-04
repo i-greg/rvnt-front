@@ -42,9 +42,9 @@ class DetailEventActivity : AppCompatActivity() {
                 Glide.with(this@DetailEventActivity).load(eventImg).centerCrop().into(binding.imageEvent)
             }
         }
-
-
-
+    // To be done: 1. butttonListener
+    //             2. SOLD OUT
+    //             3. navigation from results avtivity
 
 
 
