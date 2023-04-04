@@ -20,7 +20,7 @@ class CarouselHelper(private val viewPager2: ViewPager2, private val binding: Ac
 
     //Carousel data lists
     private var titlesList: ArrayList<String> = ArrayList()
-    private var descList: ArrayList<String> = ArrayList()
+    private var idList: ArrayList<String> = ArrayList()
     private var imagesList: ArrayList<String> = ArrayList()
 
 
@@ -30,7 +30,7 @@ class CarouselHelper(private val viewPager2: ViewPager2, private val binding: Ac
         postToCarouselList()
 
         //Setting viewpager
-        viewPager2.adapter = ViewPagerAdapter(titlesList, descList, imagesList)
+        viewPager2.adapter = ViewPagerAdapter(titlesList, idList, imagesList)
         viewPager2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
         //Setting indicator
@@ -56,9 +56,9 @@ class CarouselHelper(private val viewPager2: ViewPager2, private val binding: Ac
 
     }
 
-    private fun addToCarouselList(title: String, description: String, image: String) {
+    private fun addToCarouselList(title: String, _id: String, image: String) {
         titlesList.add(title)
-        descList.add(description)
+        idList.add(_id)
         imagesList.add(image)
     }
 

@@ -1,5 +1,6 @@
 package com.example.rvnt_front
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,8 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.rvnt_front.results.DisplayResultsActivity
+import com.example.rvnt_front.results.Results
 
 class CardViewAdapter (private val getActivity: HomeActivity, private val eventList: List<Event>):
     RecyclerView.Adapter<CardViewAdapter.MyViewHolder>(){
@@ -32,8 +35,14 @@ class CardViewAdapter (private val getActivity: HomeActivity, private val eventL
             .centerCrop()
             .into(holder.ivEventImg)
 
+        val intent = Intent(getActivity, DisplayResultsActivity::class.java)
+
         holder.cardView.setOnClickListener{
-            Toast.makeText(getActivity, eventList[position].title, Toast.LENGTH_LONG).show()
+
+            intent.putExtra("category_id", eventList[position].id)
+            getActivity.startActivity(intent)
+
+            //Toast.makeText(getActivity, eventList[position].title, Toast.LENGTH_LONG).show()
         }
     }
 

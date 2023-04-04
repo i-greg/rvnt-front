@@ -5,6 +5,8 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.*
 import com.example.rvnt_front.databinding.ActivityHomeBinding
+import com.example.rvnt_front.results.DisplayResultsActivity
+import com.example.rvnt_front.results.Results
 
 class SearchHelper(private val searchView: SearchView,
                    private val suggestionListView: ListView,
@@ -31,7 +33,13 @@ class SearchHelper(private val searchView: SearchView,
 
                 if (suggestionDataNames.contains(query)){
 
-                    suggestionAdapter.filter.filter(query)
+                    //To be revised
+                    val selectedItem = suggestionData[0]
+
+                    //to open a new activity when item in a list is clicked
+                    val intent = Intent(suggestionListView.context, DisplayResultsActivity::class.java)
+                    intent.putExtra("city_id", selectedItem.id)
+                    suggestionListView.context.startActivity(intent)
 
                 }
                 return false
@@ -58,19 +66,9 @@ class SearchHelper(private val searchView: SearchView,
 
             val selectedItem = suggestionData[position]
 
-
-
-            //to display a message once the item in list is clicked
-            Toast.makeText(
-                searchView.context,
-                "You have clicked $selectedItem",
-                Toast.LENGTH_LONG
-            ).show()
-
-
             //to open a new activity when item in a list is clicked
-            val intent = Intent(suggestionListView.context, TestActivity::class.java)
-            intent.putExtra("cityId", selectedItem.id)
+            val intent = Intent(suggestionListView.context, DisplayResultsActivity::class.java)
+            intent.putExtra("city_id", selectedItem.id)
             suggestionListView.context.startActivity(intent)
 
         }

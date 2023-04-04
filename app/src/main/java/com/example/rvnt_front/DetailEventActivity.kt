@@ -16,7 +16,7 @@ class DetailEventActivity : AppCompatActivity() {
         binding = ActivityDetailEventBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+/*
         // 31/3/2023
         // Receive the selected ResultsItem from the previous activity
         //val selectedResult = intent.getParcelableExtra("selected_result") as ResultsItem?
@@ -39,7 +39,11 @@ class DetailEventActivity : AppCompatActivity() {
             eventLocation.text = selectedResult?.city
             eventCategory.text = selectedResult?.category
             //Glide.with(this@DetailEventActivity).load(selectedResult?.imageUrl).into(ivEvent)
-        }
+
+            }
+
+ */
+
     }
 }
 
