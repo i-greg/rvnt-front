@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
 
-class ViewPagerAdapter (private var title : List<String>, private var details : List<String>,
+class ViewPagerAdapter (private var title : List<String>, private var _id : List<String>,
                         private var images : List<String>) : RecyclerView.Adapter<ViewPagerAdapter.Pager2ViewHolder>() {
 
 
@@ -22,15 +22,14 @@ class ViewPagerAdapter (private var title : List<String>, private var details : 
 
         init {
 
-            val intent = Intent(itemView.context, TestActivity::class.java)
+            val intent = Intent(itemView.context, DetailEventActivity::class.java)
 
 
             itemImage.setOnClickListener {
 
                 //Getting current position
                 val position: Int = adapterPosition
-
-                intent.putExtra("key", details[position])
+                intent.putExtra("event_id", _id[position])
                 itemView.context.startActivity(intent)
 
                 //Toast.makeText(itemView.context, "you clicked on item #${details[position]}", Toast.LENGTH_SHORT).show()
