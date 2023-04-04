@@ -4,6 +4,7 @@ import android.util.Log
 import com.example.rvnt_front.BASE_URL
 import com.example.rvnt_front.models.CarouselDataItem
 import com.example.rvnt_front.models.CategoriesDataItem
+import com.example.rvnt_front.models.DetailEventItem
 import com.example.rvnt_front.models.SuggestionsDataItem
 import retrofit2.Call
 import retrofit2.Callback
@@ -75,6 +76,27 @@ class ApiManager {
             }
 
             override fun onFailure(call: Call<List<SuggestionsDataItem>>, t: Throwable) {
+                Log.e("ApiManager", "Failed to get carousel data: ${t.message}")
+            }
+        })
+    }
+
+    // A function in order to get event's detail from DataBase for DetailEventActivity UI
+    fun getDetailEventItem(eventID: String, callback: (DetailEventItem) -> Unit) {
+        apiInterface.getDetailEventItem(eventID).enqueue(object : Callback<DetailEventItem> {
+            override fun onResponse(
+                call: Call<DetailEventItem>,
+                response: Response<DetailEventItem>
+            ) {
+                if (response.isSuccessful) {
+                    val eventData = response.body()
+                    callback(eventData ?: DetailEventItem("","","","","","","",0))
+                } else {
+                    Log.e("ApiManager", "Failed to get carousel data: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<DetailEventItem>, t: Throwable) {
                 Log.e("ApiManager", "Failed to get carousel data: ${t.message}")
             }
         })

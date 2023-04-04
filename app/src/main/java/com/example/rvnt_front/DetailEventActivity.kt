@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.rvnt_front.databinding.ActivityDetailEventBinding
 import com.bumptech.glide.Glide
+import com.example.rvnt_front.api.ApiManager
+import com.example.rvnt_front.models.DetailEventItem
 import com.example.rvnt_front.results.ResultsItem
 
 class DetailEventActivity : AppCompatActivity() {
@@ -16,10 +18,44 @@ class DetailEventActivity : AppCompatActivity() {
         binding = ActivityDetailEventBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-/*
-        // 31/3/2023
-        // Receive the selected ResultsItem from the previous activity
-        //val selectedResult = intent.getParcelableExtra("selected_result") as ResultsItem?
+
+        // Taking eventID from HomeActivity
+        val extras = intent.extras
+        if (extras != null) {
+            val value = extras.getString("event_id")
+            val apiManager = ApiManager()
+            apiManager.getDetailEventItem(value!!) { eventData ->
+                //Load data for event's detail activity given the eventID from HomeActivity
+                //Through a get-API call
+                val eventTitle = eventData.name
+                val eventDate = eventData.date
+                val eventLocation = eventData.location
+                val eventCategory = eventData.category
+                val eventImg = eventData.image
+                val eventDescription = eventData.description
+
+                binding.eventTitle.text = eventTitle
+                binding.eventDate.text = eventDate
+                binding.eventLocation.text = eventLocation
+                binding.eventCategory.text = eventCategory
+                binding.eventDescription.text = eventDescription
+                Glide.with(this@DetailEventActivity).load(eventImg).centerCrop().into(binding.imageEvent)
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*
 
         @Suppress("DEPRECATION")
         val selectedResult = intent.getParcelableExtra<ResultsItem>("selected_result") as ResultsItem
@@ -42,8 +78,8 @@ class DetailEventActivity : AppCompatActivity() {
 
             }
 
- */
 
+         */
     }
 }
 
