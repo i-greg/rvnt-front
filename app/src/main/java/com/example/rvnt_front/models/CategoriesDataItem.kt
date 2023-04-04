@@ -1,7 +1,7 @@
 package com.example.rvnt_front.models
 
 data class CategoriesDataItem(
-    val id: String,
+    val _id: String,
     val category: String,
-    val image: String
+    val category_img: String
 )

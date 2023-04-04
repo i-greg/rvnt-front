@@ -4,14 +4,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import com.example.rvnt_front.api.ApiInterface
 import com.example.rvnt_front.databinding.ActivityTestBinding
-import com.example.rvnt_front.models.TestDataItem
+import com.example.rvnt_front.models.CarouselDataItem
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
-
-const val BASE_URL = "https://jsonplaceholder.typicode.com/"
-
+const val BASE_URL = "https://rvnt-api.onrender.com/"
 class TestActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityTestBinding
@@ -23,7 +22,7 @@ class TestActivity : AppCompatActivity() {
 
         val extras = intent.extras
         if (extras != null) {
-            val value = extras.getString("key")
+            val value = extras.getString("cityId")
             //The key argument here must match that used in the other activity
             binding.tvTextView.text = value
         }
@@ -39,27 +38,27 @@ class TestActivity : AppCompatActivity() {
             .build()
             .create(ApiInterface::class.java)
 
-        val retrofitData = retrofitBuilder.getTestData()
+        val retrofitData = retrofitBuilder.getCarouselData()
 
-        retrofitData.enqueue(object : Callback<List<TestDataItem>?> {
+        retrofitData.enqueue(object : Callback<List<CarouselDataItem>?> {
             override fun onResponse(
-                call: Call<List<TestDataItem>?>,
-                response: Response<List<TestDataItem>?>
+                call: Call<List<CarouselDataItem>?>,
+                response: Response<List<CarouselDataItem>?>
             ) {
                 val responseBody = response.body()!!
 
                 val myStingBuilder = StringBuilder()
 
                 for (responseData in responseBody){
-                    myStingBuilder.append(responseData.id)
+                    myStingBuilder.append(responseData.name)
                     myStingBuilder.append("\n")
                 }
 
-                myTv.text = myStingBuilder
+                //myTv.text = myStingBuilder
 
             }
 
-            override fun onFailure(call: Call<List<TestDataItem>?>, t: Throwable) {
+            override fun onFailure(call: Call<List<CarouselDataItem>?>, t: Throwable) {
                 Log.d("TestActivity", "onFailure"+t.message)
             }
         })

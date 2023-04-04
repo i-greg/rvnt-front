@@ -4,8 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.rvnt_front.api.ApiManager
 import com.example.rvnt_front.databinding.ActivityHomeBinding
-import org.json.JSONObject
 
 
 class HomeActivity : AppCompatActivity() {
@@ -30,73 +30,73 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
+    override fun onPause() {
+        super.onPause()
+        //Stop focus on searchView
+        binding.searchView.clearFocus()
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()
-        // Stop auto scrolling when the activity is destroyed
+        //Stop auto scrolling when the activity is destroyed
         carouselHelper.stopAutoScrolling()
+        //Stop focus on searchView
+        binding.searchView.clearFocus()
 
     }
 
     private fun setupCarousel(){
         carouselHelper = CarouselHelper(viewPager2 = binding.viewPager2, binding = binding)
         carouselHelper.setupCarousel()
-    }
+        }
 
     private fun setupSearch(){
+        val apiManager = ApiManager()
+        apiManager.getSuggestionData { suggestionsData ->
+            val citiesList = mutableListOf<SearchHelper.CityWithId>()
+            for (data in suggestionsData) {
+                citiesList.add(SearchHelper.CityWithId(data.city, data._id))
+            }
 
-        //Dummy data for search functionality
-        val cities = arrayOf(
-            "New York City, USA", "Paris, France", "Tokyo, Japan",
-            "London, UK", "Sydney, Australia", "Rio de Janeiro, Brazil",
-            "Mumbai, India", "Beijing, China", "Moscow, Russia",
-            "Dubai, UAE", "Rome, Italy", "Toronto, Canada",
-            "Cape Town, South Africa", "Mexico City, Mexico",
-            "Buenos Aires, Argentina", "Berlin, Germany", "Bangkok, Thailand",
-            "Istanbul, Turkey", "Cairo, Egypt", "Seoul, South Korea"
-        )
-
-        searchHelper = SearchHelper(
-            searchView = binding.searchView,
-            suggestionListView = binding.lvSuggestions,
-            suggestionData = cities,
-            binding = binding
-        )
+            searchHelper = SearchHelper(
+                searchView = binding.searchView,
+                suggestionListView = binding.lvSuggestions,
+                suggestionData = citiesList,
+                binding = binding
+            )
+        }
     }
 
     private fun setupCard(){
         //CardView Functionality
         eventList = ArrayList()
-
         prepareEventListData()
 
-        recyclerView = binding.rvCard
-        cardViewAdapter = CardViewAdapter(this@HomeActivity, eventList)
-        val layoutManager : RecyclerView.LayoutManager = GridLayoutManager(this, 2)
-        recyclerView!!.layoutManager = layoutManager
-        recyclerView!!.adapter = cardViewAdapter
-
-
+            recyclerView = binding.rvCard
+            cardViewAdapter = CardViewAdapter(this@HomeActivity, eventList)
+            val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(this, 2)
+            recyclerView!!.layoutManager = layoutManager
+            recyclerView!!.adapter = cardViewAdapter
     }
 
     private fun prepareEventListData() {
+        val apiManager = ApiManager()
+        apiManager.getCardData { cardData ->
+            //Handle response here
+            for (data in cardData) {
+                val eventName = data.category
+                val imageUrl = data.category_img
+                val id = data._id
+                val event = CardViewAdapter.Event(eventName, imageUrl, id)
 
-        val jsonFileString = binding.root.context.assets.open("dummy_db.json").bufferedReader().use { it.readText() }
-        val jsonObject = JSONObject(jsonFileString)
-        val eventsArray = jsonObject.getJSONArray("Events")
-
-        for (item in 0 until eventsArray.length()) {
-            val eventObject = eventsArray.getJSONObject(item)
-            val eventName = eventObject.getString("title")
-            val imageUrl = eventObject.getString("img")
-            val event = CardViewAdapter.Event(eventName, imageUrl)
-
-            eventList.add(event)
+                eventList.add(event)
+            }
+            cardViewAdapter!!.notifyDataSetChanged()
         }
 
-        //cardViewAdapter!!.notifyDataSetChanged()
-
     }
+
 }
 
 
