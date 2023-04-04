@@ -6,15 +6,19 @@ import android.view.View
 import android.widget.*
 import com.example.rvnt_front.databinding.ActivityHomeBinding
 
-class SearchHelper(private val searchView: SearchView, private val suggestionListView: ListView,
-                   private val suggestionData: Array<String>, private val binding: ActivityHomeBinding) {
+class SearchHelper(private val searchView: SearchView,
+                   private val suggestionListView: ListView,
+                   private val suggestionData: List<CityWithId>,
+                   private val binding: ActivityHomeBinding) {
 
 
     init {
 
+        val suggestionDataNames = suggestionData.map { it.city }
+
         //Adapter for the suggestion list
         val suggestionAdapter : ArrayAdapter<String> = ArrayAdapter(
-            searchView.context, android.R.layout.simple_list_item_1, suggestionData
+            searchView.context, android.R.layout.simple_list_item_1, suggestionDataNames
         )
 
         suggestionListView.adapter = suggestionAdapter
@@ -25,7 +29,7 @@ class SearchHelper(private val searchView: SearchView, private val suggestionLis
 
                 searchView.clearFocus()
 
-                if (suggestionData.contains(query)){
+                if (suggestionDataNames.contains(query)){
 
                     suggestionAdapter.filter.filter(query)
 
@@ -52,25 +56,29 @@ class SearchHelper(private val searchView: SearchView, private val suggestionLis
 
                 adapterView, view, position, id ->
 
-            val selectedItem = adapterView.getItemAtPosition(position) as String
-            val itemposition = adapterView.getItemIdAtPosition(position)
+            val selectedItem = suggestionData[position]
+
 
 
             //to display a message once the item in list is clicked
             Toast.makeText(
                 searchView.context,
-                "You have clicked $selectedItem at position $itemposition",
+                "You have clicked $selectedItem",
                 Toast.LENGTH_LONG
             ).show()
 
 
             //to open a new activity when item in a list is clicked
             val intent = Intent(suggestionListView.context, TestActivity::class.java)
-            intent.putExtra("key", selectedItem)
+            intent.putExtra("cityId", selectedItem.id)
             suggestionListView.context.startActivity(intent)
 
         }
 
     }
+    data class CityWithId(
+        val city: String,
+        val id: String
+    )
 
 }

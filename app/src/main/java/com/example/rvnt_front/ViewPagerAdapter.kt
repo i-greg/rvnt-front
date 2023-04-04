@@ -50,6 +50,8 @@ class ViewPagerAdapter (private var title : List<String>, private var details : 
 
     override fun onBindViewHolder(holder: ViewPagerAdapter.Pager2ViewHolder, position: Int) {
         holder.itemTitle.text = title[position]
+
+
         Glide.with(holder.itemImage.context)
             .load(images[position])
             //Image fill

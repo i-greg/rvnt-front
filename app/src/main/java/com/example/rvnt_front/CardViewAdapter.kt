@@ -47,7 +47,8 @@ class CardViewAdapter (private val getActivity: HomeActivity, private val eventL
 
     data class Event(
         var title: String,
-        var image: String
+        var image: String,
+        var id: String
     )
 
 }

@@ -3,8 +3,8 @@ package com.example.rvnt_front
 import android.os.Handler
 import android.os.Looper
 import androidx.viewpager2.widget.ViewPager2
+import com.example.rvnt_front.api.ApiManager
 import com.example.rvnt_front.databinding.ActivityHomeBinding
-import com.google.gson.Gson
 import kotlin.collections.ArrayList
 
 
@@ -64,12 +64,13 @@ class CarouselHelper(private val viewPager2: ViewPager2, private val binding: Ac
 
     private fun postToCarouselList() {
         //need to get data from HomeActivity!!!!! probably :/
-        val jsonFileString = binding.root.context.assets.open("imagedata.json").bufferedReader().use { it.readText() }
-        val imageResponse = Gson().fromJson(jsonFileString, ImageResponse::class.java)
-
-
-        for (imageData in imageResponse.images) {
-            addToCarouselList(imageData.title, imageData.description, imageData.image)
+        val apiManager = ApiManager()
+        apiManager.getCarouselData { carouselData ->
+            //Handle response here
+            for (data in carouselData) {
+                addToCarouselList(data.name, data._id, data.image)
+            }
+            viewPager2.adapter?.notifyDataSetChanged()
         }
     }
 
@@ -81,10 +82,6 @@ class CarouselHelper(private val viewPager2: ViewPager2, private val binding: Ac
         val title: String,
         val description: String,
         val image: String
-    )
-
-    data class ImageResponse(
-        val images: List<ImageData>
     )
 
 }
