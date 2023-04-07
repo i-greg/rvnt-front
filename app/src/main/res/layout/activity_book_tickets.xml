@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- A ListView for the available event's dates-->
-    <ListView
+    <!-- A RecyclerView for the available event's dates-->
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/datesList"
         android:layout_width="wrap_content"
         android:layout_height="370dp"
@@ -56,8 +56,6 @@
         app:layout_constraintVertical_bias="0.551" />
 
     <!-- An EditText for user's full name -->
-
-    <!-- A button for tickets book-->
     <EditText
         android:id="@+id/editFullName"
         android:layout_width="240dp"
@@ -73,12 +71,15 @@
         app:layout_constraintTop_toBottomOf="@+id/datesList"
         app:layout_constraintVertical_bias="0.523" />
 
+
+    <!-- A button for tickets book-->
     <Button
         android:id="@+id/bookTicketButton"
         android:layout_width="170dp"
         android:layout_height="60dp"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="10dp"
+        android:enabled="false"
         android:backgroundTint="@color/app_orange"
         android:text="Book"
         android:textColor="#ffffff"
@@ -86,14 +87,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+
+
     <!-- A button for tickets cancel-->
-
-
-    <!-- An EditText for user's Email -->
-
-
-    <!-- A person icon-->
-
     <Button
         android:id="@+id/cancelTicketButton"
         android:layout_width="200dp"
@@ -111,6 +107,8 @@
         app:layout_constraintTop_toBottomOf="@+id/editEmail"
         app:layout_constraintVertical_bias="0.818" />
 
+    <!-- An EditText for user's Email -->
+
     <EditText
         android:id="@+id/editEmail"
         android:layout_width="240dp"
@@ -127,6 +125,8 @@
         app:layout_constraintTop_toBottomOf="@+id/editFullName"
         app:layout_constraintVertical_bias="0.285" />
 
+
+    <!-- A person icon-->
     <ImageView
         android:id="@+id/personImage"
         android:layout_width="49dp"
@@ -138,6 +138,8 @@
         app:layout_constraintTop_toBottomOf="@+id/ticketsNumber"
         app:layout_constraintVertical_bias="0.263"
         app:srcCompat="@drawable/name_icon_foreground" />
+
+    <!-- An email icon -->
 
     <ImageView
         android:id="@+id/imageView6"

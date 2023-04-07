@@ -94,8 +94,7 @@ class DetailEventActivity : AppCompatActivity() {
         }
 
 
-    // To be done: 1. butttonListener
-    //             2. SOLD OUT
+
     //             3. navigation from results avtivity
 
 
@@ -107,8 +106,8 @@ class DetailEventActivity : AppCompatActivity() {
 
 
 
-        /*
 
+/*
         @Suppress("DEPRECATION")
         val selectedResult = intent.getParcelableExtra<ResultsItem>("selected_result") as ResultsItem
 
@@ -129,9 +128,9 @@ class DetailEventActivity : AppCompatActivity() {
             //Glide.with(this@DetailEventActivity).load(selectedResult?.imageUrl).into(ivEvent)
 
             }
+*/
 
 
-         */
     }
 }
 

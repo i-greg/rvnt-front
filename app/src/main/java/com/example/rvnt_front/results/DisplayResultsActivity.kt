@@ -38,13 +38,12 @@ class DisplayResultsActivity : AppCompatActivity(), ResultsAdapter.OnItemClickLi
         // so we launch a coroutine here
 
 
-
         //launchWhenCreated
         lifecycleScope.launchWhenCreated {
 
             val response = try {
                 RetrofitInstance.api.getResults()
-            } catch(e: IOException) {
+            } catch (e: IOException) {
                 Log.e(TAG, "IOException, you might not have internet connection")
 
                 return@launchWhenCreated
@@ -53,7 +52,7 @@ class DisplayResultsActivity : AppCompatActivity(), ResultsAdapter.OnItemClickLi
 
                 return@launchWhenCreated
             }
-            if(response.isSuccessful && response.body() != null) {
+            if (response.isSuccessful && response.body() != null) {
                 resultAdapter.results = response.body()!!
             } else {
                 Log.e(TAG, "Response not successful")
@@ -62,10 +61,7 @@ class DisplayResultsActivity : AppCompatActivity(), ResultsAdapter.OnItemClickLi
         }
 
 
-
-
     }
-
 
 
     // initialize the recyclerview
@@ -88,11 +84,12 @@ class DisplayResultsActivity : AppCompatActivity(), ResultsAdapter.OnItemClickLi
         // e.g., start a new activity with the details of the selected item
         // or show a dialog box with more information about the selected item
         // Start the DetailEventActivity with the selected ResultsItem as an extra
+        //val intent = Intent(this@DisplayResultsActivity, DetailEventActivity::class.java)
+        //intent.putExtra("selected_result", result)
+        //startActivity(intent)
+
         val intent = Intent(this@DisplayResultsActivity, DetailEventActivity::class.java)
-        intent.putExtra("selected_result", result)
-        startActivity(intent)
+
+
     }
-
-
-
 }

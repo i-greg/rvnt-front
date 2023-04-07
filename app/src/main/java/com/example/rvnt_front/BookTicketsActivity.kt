@@ -41,15 +41,15 @@ class BookTicketsActivity : AppCompatActivity() {
             //Initialize minimumValue
             binding.ticketsNumberPicker.minValue = 1
 
-            //
+            //Check for remaining tickets' availability in NumberPicker
             if (ticketsRemaining < 10) {
                 binding.ticketsNumberPicker.maxValue = ticketsRemaining
             }else{
                 binding.ticketsNumberPicker.maxValue = 10
             }
 
-            //
             binding.ticketsNumberPicker.wrapSelectorWheel = true
+            binding.ticketsNumberPicker.setOnValueChangedListener { numberPicker, oldValue, newValue2 -> binding.ticketsNumber.text = "Booking Tickets: $newValue2"  }
         }
 
 

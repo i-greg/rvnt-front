@@ -8,7 +8,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class ResultsItem(
 
-
+    val _id: String,
     val category: String,
     val city: String,
     val date: String,
