@@ -90,7 +90,7 @@ class ApiManager {
             ) {
                 if (response.isSuccessful) {
                     val eventData = response.body()
-                    callback(eventData ?: DetailEventItem("","","","","","","",0))
+                    callback(eventData ?: DetailEventItem("","","","","","","","", "", 0, 0, 0))
                 } else {
                     Log.e("ApiManager", "Failed to get carousel data: ${response.message()}")
                 }
