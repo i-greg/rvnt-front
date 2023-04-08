@@ -1,7 +1,9 @@
 package com.example.rvnt_front
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -24,10 +26,36 @@ class BookTicketsActivity : AppCompatActivity() {
         binding = ActivityBookTicketsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //
+        val extras = intent.extras
+        if (extras != null) {
+
+            val ticketsTotal = extras.getInt("ticketsTotal")
+            val ticketsRemaining = extras.getInt("ticketsRemaining")
+            val eventPrice = extras.getInt("price")
+            val ticketsDate = extras.getString("date")
+            val eventTime = extras.getString("time")
+            val location = extras.getString("location")
+
+            //NumberPicker
+            //Initialize minimumValue
+            binding.ticketsNumberPicker.minValue = 1
+
+            //Check for remaining tickets' availability in NumberPicker
+            if (ticketsRemaining < 10) {
+                binding.ticketsNumberPicker.maxValue = ticketsRemaining
+            }else{
+                binding.ticketsNumberPicker.maxValue = 10
+            }
+
+            binding.ticketsNumberPicker.wrapSelectorWheel = true
+            binding.ticketsNumberPicker.setOnValueChangedListener { numberPicker, oldValue, newValue2 -> binding.ticketsNumber.text = "Booking Tickets: $newValue2"  }
+        }
 
 
         //Creation of successfully booking tickets as pop up message
         val book = binding.bookTicketButton
+        val cancel = binding.cancelTicketButton
 
         //Set a clickListener for Book button
         //Where a success message will be displayed
@@ -45,20 +73,12 @@ class BookTicketsActivity : AppCompatActivity() {
         }
 
 
+        //Set a clickListener for Cancel button
+        //In order to navigate to DetailEventActivity
+        cancel.setOnClickListener {
 
-
-
-        //testing NumberPicker
-        binding.ticketsNumberPicker.minValue = 1
-        binding.ticketsNumberPicker.maxValue = 10
-        binding.ticketsNumberPicker.wrapSelectorWheel = true
-
-
-
-
-
-
-
+            this.onBackPressed()
+        }
 
     }
 }

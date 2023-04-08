@@ -2,9 +2,11 @@ package com.example.rvnt_front.api
 
 import com.example.rvnt_front.models.CarouselDataItem
 import com.example.rvnt_front.models.CategoriesDataItem
+import com.example.rvnt_front.models.DetailEventItem
 import com.example.rvnt_front.models.SuggestionsDataItem
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface ApiInterface {
 
@@ -16,5 +18,9 @@ interface ApiInterface {
 
     @GET("cities")
     fun getSuggestionData(): Call<List<SuggestionsDataItem>>
+
+    @GET("events/{eventID}")
+    fun getDetailEventItem(@Path("eventID") eventID: String): Call<DetailEventItem>
+
 }
 
