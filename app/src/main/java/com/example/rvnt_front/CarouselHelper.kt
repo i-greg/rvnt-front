@@ -33,9 +33,7 @@ class CarouselHelper(private val viewPager2: ViewPager2, private val binding: Ac
         viewPager2.adapter = ViewPagerAdapter(titlesList, idList, imagesList)
         viewPager2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
-        //Setting indicator
-        val indicator = binding.indicator
-        indicator.setViewPager(viewPager2)
+
 
         //Schedule auto scrolling
         runnable = Runnable {
@@ -71,6 +69,9 @@ class CarouselHelper(private val viewPager2: ViewPager2, private val binding: Ac
                 addToCarouselList(data.name, data._id, data.image)
             }
             viewPager2.adapter?.notifyDataSetChanged()
+            //Setting indicator
+            val indicator = binding.indicator
+            indicator.setViewPager(viewPager2)
         }
     }
 

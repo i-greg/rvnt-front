@@ -31,12 +31,16 @@ class SearchHelper(private val searchView: SearchView,
 
                 searchView.clearFocus()
 
-                if (suggestionDataNames.contains(query)){
+                //Get the 1st suggestion
+                val selectedItem = suggestionData.firstOrNull { it.city.equals(query.toString(), ignoreCase = true) }
+                    ?: suggestionData.firstOrNull { it.city.startsWith(query.toString(), ignoreCase = true) }
 
-                    //To be revised
-                    val selectedItem = suggestionData[0]
+                //Clear text from searchview
+                searchView.setQuery("", false)
 
-                    //to open a new activity when item in a list is clicked
+                if (selectedItem != null){
+
+                    //To open a new activity when item in a list is clicked
                     val intent = Intent(suggestionListView.context, DisplayResultsActivity::class.java)
                     intent.putExtra("city_id", selectedItem.id)
                     suggestionListView.context.startActivity(intent)
