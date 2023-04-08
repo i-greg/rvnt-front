@@ -97,43 +97,6 @@ class DetailEventActivity : AppCompatActivity() {
         }
 
 
-
-    //             3. navigation from results avtivity
-
-
-
-
-
-
-
-
-
-
-
-/*
-        @Suppress("DEPRECATION")
-        val selectedResult = intent.getParcelableExtra<ResultsItem>("selected_result") as ResultsItem
-
-
-        // 31/3/2023
-        // Set the title of the activity
-        supportActionBar?.title = selectedResult?.title
-
-        // 31/3/2023
-        // Bind the data to the views
-        binding.apply {
-
-
-            eventTitle.text = selectedResult?.title
-            eventDate.text = selectedResult?.date
-            eventLocation.text = selectedResult?.city
-            eventCategory.text = selectedResult?.category
-            //Glide.with(this@DetailEventActivity).load(selectedResult?.imageUrl).into(ivEvent)
-
-            }
-*/
-
-
     }
 }
 
