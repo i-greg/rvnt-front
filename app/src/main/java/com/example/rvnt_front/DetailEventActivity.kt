@@ -10,6 +10,7 @@ import android.view.View
 import com.example.rvnt_front.databinding.ActivityDetailEventBinding
 import com.bumptech.glide.Glide
 import com.example.rvnt_front.api.ApiManager
+import com.example.rvnt_front.models.CityItem
 import com.example.rvnt_front.models.DetailEventItem
 import com.example.rvnt_front.results.DisplayResultsActivity
 import com.example.rvnt_front.results.ResultsItem
@@ -21,9 +22,11 @@ class DetailEventActivity : AppCompatActivity() {
     private var ticketsTotal = 0
     private var ticketsRemaining = 0
     private var eventPrice = 0
-    private var eventDate = ""
+    private var eventDate = ArrayList<String>()
     private var eventTime = ""
     private var eventLocation = ""
+    private var cityId: CityItem = CityItem("","")
+
 
 
 
@@ -55,13 +58,13 @@ class DetailEventActivity : AppCompatActivity() {
                 ticketsTotal = eventData.tickets_total
                 ticketsRemaining = eventData.tickets_remaining
                 eventPrice = eventData.price
-                eventTime = eventData.time
+                eventTime = eventData.time[0]
 
 
                 binding.eventTitle.text = eventTitle
-                binding.eventDate.text = eventDate
+                binding.eventDate.text = eventDate[0]
                 binding.eventLocation.text = eventLocation
-                binding.eventCategory.text = eventCategory
+                binding.eventCategory.text = eventCategory.category
                 binding.eventDescription.text = eventDescription
                 Glide.with(this@DetailEventActivity).load(eventImg).centerCrop().into(binding.imageEvent)
 

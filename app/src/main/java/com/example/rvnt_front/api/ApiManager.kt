@@ -2,10 +2,7 @@ package com.example.rvnt_front.api
 
 import android.util.Log
 import com.example.rvnt_front.BASE_URL
-import com.example.rvnt_front.models.CarouselDataItem
-import com.example.rvnt_front.models.CategoriesDataItem
-import com.example.rvnt_front.models.DetailEventItem
-import com.example.rvnt_front.models.SuggestionsDataItem
+import com.example.rvnt_front.models.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -90,7 +87,10 @@ class ApiManager {
             ) {
                 if (response.isSuccessful) {
                     val eventData = response.body()
-                    callback(eventData ?: DetailEventItem("","","","","","","","", "", 0, 0, 0))
+                    //Modify time, date, category, city
+                    callback(eventData ?: DetailEventItem("","",ArrayList(),"",
+                        ArrayList(),"",
+                        CityItem("",""),CategoryItem("",""), "", 0, 0, 0))
                 } else {
                     Log.e("ApiManager", "Failed to get carousel data: ${response.message()}")
                 }

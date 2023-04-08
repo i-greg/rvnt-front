@@ -80,19 +80,5 @@ class BookTicketsActivity : AppCompatActivity() {
             this.onBackPressed()
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

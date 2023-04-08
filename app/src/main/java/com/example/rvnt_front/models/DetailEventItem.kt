@@ -1,14 +1,16 @@
 package com.example.rvnt_front.models
 
+import java.util.Dictionary
+
 data class DetailEventItem (
     val _id: String,
     val name: String,
-    val time: String,
+    val time: ArrayList<String>,
     val image: String,
-    val date: String,
+    val date: ArrayList<String>,
     val location: String,
-    val city_id: String,
-    val category_id: String,
+    val city_id: CityItem,
+    val category_id: CategoryItem,
     val description: String,
     val tickets_remaining: Int,
     val tickets_total: Int,
