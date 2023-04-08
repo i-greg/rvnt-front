@@ -11,10 +11,10 @@ interface ApiInterface {
     @GET("events/popular/5")
     fun getCarouselData(): Call<List<CarouselDataItem>>
 
-    @GET("events/categories")
+    @GET("categories")
     fun getCategoriesData(): Call<List<CategoriesDataItem>>
 
-    @GET("events/cities")
+    @GET("cities")
     fun getSuggestionData(): Call<List<SuggestionsDataItem>>
 }
 
