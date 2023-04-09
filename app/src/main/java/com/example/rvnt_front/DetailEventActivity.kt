@@ -23,7 +23,7 @@ class DetailEventActivity : AppCompatActivity() {
     private var ticketsRemaining = 0
     private var eventPrice = 0
     private var eventDate = ArrayList<String>()
-    private var eventTime = ""
+    private var eventTime = ArrayList<String>()
     private var eventLocation = ""
     private var cityId: CityItem = CityItem("","")
 
@@ -58,7 +58,7 @@ class DetailEventActivity : AppCompatActivity() {
                 ticketsTotal = eventData.tickets_total
                 ticketsRemaining = eventData.tickets_remaining
                 eventPrice = eventData.price
-                eventTime = eventData.time[0]
+                eventTime = eventData.time
 
 
                 binding.eventTitle.text = eventTitle
@@ -73,7 +73,7 @@ class DetailEventActivity : AppCompatActivity() {
                 if (ticketsRemaining <= 0){
                     binding.tickets.isEnabled = false
                     binding.tickets.setText("SOLD OUT")
-                    binding.tickets.setBackgroundColor(Color.BLACK)
+                    binding.tickets.setBackgroundColor(Color.GRAY)
                 }
             }
         }

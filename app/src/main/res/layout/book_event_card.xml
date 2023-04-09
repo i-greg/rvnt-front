@@ -4,8 +4,8 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/bookEventCard"
-    android:layout_width="360dp"
-    android:layout_height="170dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
     android:layout_margin="5dp"
     android:padding="5dp"
@@ -13,8 +13,8 @@
     app:cardCornerRadius="15dp">
 
     <LinearLayout
-        android:layout_width="360dp"
-        android:layout_height="175dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/white"
         android:gravity="center_horizontal"
         android:orientation="vertical">
@@ -31,7 +31,8 @@
             android:text="Day,  Month DN"
             android:textColor="#000000"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            />
 
         <!-- A textView for event's time-->
         <TextView
@@ -71,14 +72,6 @@
             android:textAlignment="center" />
 
         <!-- A progressBar for ticket availability-->
-        <ProgressBar
-            android:id="@+id/ticketAvailability"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:backgroundTint="@color/white"
-            android:theme="@style/appColorTheme"/>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

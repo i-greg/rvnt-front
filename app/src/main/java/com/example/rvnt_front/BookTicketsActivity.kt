@@ -14,28 +14,46 @@ import com.example.rvnt_front.databinding.ActivityDetailEventBinding
 import com.bumptech.glide.Glide
 import com.example.rvnt_front.databinding.ActivityBookTicketsBinding
 import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.rvnt_front.api.ApiManager
 
 class BookTicketsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBookTicketsBinding
     private lateinit var bookTicketButton: Button              // A variable for Book button
     private lateinit var cancelTicketButton: Button            // A variable for Cancel button
+    private var selectEvent = EventSelectorAdapter.SelectEvent(ArrayList(), ArrayList(), "", 0, 0, 0)
+    private var recyclerView: RecyclerView? = null
+    private var cardBookAdapter: EventSelectorAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBookTicketsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //
+        //Take attributes for event
         val extras = intent.extras
         if (extras != null) {
 
             val ticketsTotal = extras.getInt("ticketsTotal")
             val ticketsRemaining = extras.getInt("ticketsRemaining")
             val eventPrice = extras.getInt("price")
-            val ticketsDate = extras.getString("date")
-            val eventTime = extras.getString("time")
-            val location = extras.getString("location")
+            val ticketsDate = extras.getStringArrayList("date") as ArrayList<String>
+            val eventTime = extras.getStringArrayList("time")  as ArrayList<String>
+            val location = extras.getString("location") as String
+
+
+
+            selectEvent.date = ticketsDate
+            selectEvent.time = eventTime
+            selectEvent.location = location
+            selectEvent.price = eventPrice
+            selectEvent.ticketsRemaining = ticketsRemaining
+            selectEvent.ticketsTotal = ticketsTotal
+
+            setupCard(selectEvent)
+
 
             //NumberPicker
             //Initialize minimumValue
@@ -81,4 +99,18 @@ class BookTicketsActivity : AppCompatActivity() {
         }
 
     }
+
+
+    //
+    private fun setupCard(selectEvent: EventSelectorAdapter.SelectEvent){
+        //CardView Functionality
+        //selectEvent = EventSelectorAdapter.SelectEvent()
+
+        recyclerView = binding.datesList
+        cardBookAdapter = EventSelectorAdapter(this@BookTicketsActivity, selectEvent)
+        val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(this, 1)
+        recyclerView!!.layoutManager = layoutManager
+        recyclerView!!.adapter = cardBookAdapter
+    }
+
 }
