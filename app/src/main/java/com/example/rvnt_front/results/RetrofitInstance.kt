@@ -14,11 +14,18 @@ object RetrofitInstance {
 
     //.baseUrl("https://jsonplaceholder.typicode.com")
 
+    // const val BASE_URL = "https://rvnt-api.onrender.com/"
+
+    // .baseUrl("https://mockend.com")
+
+  /*
     val api: ResultsApi by lazy {
         Retrofit.Builder()
-            .baseUrl("https://mockend.com")
+            .baseUrl("https://rvnt-api.onrender.com")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ResultsApi::class.java)
     }
+
+   */
 }

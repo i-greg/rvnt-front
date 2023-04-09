@@ -5,6 +5,7 @@ import com.example.rvnt_front.BASE_URL
 import com.example.rvnt_front.models.CarouselDataItem
 import com.example.rvnt_front.models.CategoriesDataItem
 import com.example.rvnt_front.models.SuggestionsDataItem
+import com.example.rvnt_front.results.ResultsItem
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -79,4 +80,26 @@ class ApiManager {
             }
         })
     }
+
+    // 7/4/23 function for results activity added..
+    fun getResultsData(callback: (List<ResultsItem>) -> Unit) {
+        apiInterface.getResultsData().enqueue(object : Callback<List<ResultsItem>> {
+            override fun onResponse(
+                call: Call<List<ResultsItem>>,
+                response: Response<List<ResultsItem>>
+            ) {
+                if (response.isSuccessful) {
+                    val resultsData = response.body()
+                    callback(resultsData ?: emptyList())
+                } else {
+                    Log.e("ApiManager", "Failed to get results data: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<List<ResultsItem>>, t: Throwable) {
+                Log.e("ApiManager", "Failed to get results data: ${t.message}")
+            }
+        })
+    }
+
 }

@@ -28,7 +28,7 @@ class ResultsAdapter : RecyclerView.Adapter<ResultsAdapter.ResultsViewHolder>() 
 
     private val diffCallback = object : DiffUtil.ItemCallback<ResultsItem>() {
         override fun areItemsTheSame(oldItem: ResultsItem, newItem: ResultsItem): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem._id == newItem._id
         }
 
         override fun areContentsTheSame(oldItem: ResultsItem, newItem: ResultsItem): Boolean {
@@ -62,9 +62,9 @@ class ResultsAdapter : RecyclerView.Adapter<ResultsAdapter.ResultsViewHolder>() 
     override fun onBindViewHolder(holder: ResultsViewHolder, position: Int) {
         holder.binding.apply {
             val result = results[position]
-            tvTitle.text = result.title
+            tvName.text = result.name
             tvDate.text = result.date
-            tvCity.text = result.city
+            tvCity.text = result.city_id
             // 31/3/2023
             // Set the click listener to open the DetailEventActivity with the selected ResultsItem
             root.setOnClickListener { listener?.onItemClick(result) }

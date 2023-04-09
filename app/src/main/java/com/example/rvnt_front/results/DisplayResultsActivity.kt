@@ -10,6 +10,7 @@ import com.bumptech.glide.load.HttpException
 import com.example.rvnt_front.DetailEventActivity
 import java.io.IOException
 import com.example.rvnt_front.ResultsAdapter
+import com.example.rvnt_front.api.ApiManager
 import com.example.rvnt_front.databinding.ActivityDisplayResultsBinding
 
 const val TAG = "DisplayResultsActivity"
@@ -39,11 +40,13 @@ class DisplayResultsActivity : AppCompatActivity(), ResultsAdapter.OnItemClickLi
 
 
 
+        /*
         //launchWhenCreated
         lifecycleScope.launchWhenCreated {
 
             val response = try {
-                RetrofitInstance.api.getResults()
+               RetrofitInstance.api.getResults()
+
             } catch(e: IOException) {
                 Log.e(TAG, "IOException, you might not have internet connection")
 
@@ -60,7 +63,7 @@ class DisplayResultsActivity : AppCompatActivity(), ResultsAdapter.OnItemClickLi
             }
 
         }
-
+*/
 
 
 

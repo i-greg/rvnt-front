@@ -6,12 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.rvnt_front.results.DisplayResultsActivity
-import com.example.rvnt_front.results.Results
 
 class CardViewAdapter (private val getActivity: HomeActivity, private val eventList: List<Event>):
     RecyclerView.Adapter<CardViewAdapter.MyViewHolder>(){

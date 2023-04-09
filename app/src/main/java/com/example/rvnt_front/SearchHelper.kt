@@ -6,7 +6,6 @@ import android.view.View
 import android.widget.*
 import com.example.rvnt_front.databinding.ActivityHomeBinding
 import com.example.rvnt_front.results.DisplayResultsActivity
-import com.example.rvnt_front.results.Results
 
 class SearchHelper(private val searchView: SearchView,
                    private val suggestionListView: ListView,

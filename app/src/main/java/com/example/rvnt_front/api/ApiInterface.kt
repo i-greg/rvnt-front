@@ -3,7 +3,9 @@ package com.example.rvnt_front.api
 import com.example.rvnt_front.models.CarouselDataItem
 import com.example.rvnt_front.models.CategoriesDataItem
 import com.example.rvnt_front.models.SuggestionsDataItem
+import com.example.rvnt_front.results.ResultsItem
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.GET
 
 interface ApiInterface {
@@ -16,5 +18,11 @@ interface ApiInterface {
 
     @GET("events/cities")
     fun getSuggestionData(): Call<List<SuggestionsDataItem>>
+
+    // 7/4/23 getFunc added for the results activity...endpoint??
+    @GET("events/cities")
+    fun getResultsData(): Call<List<ResultsItem>>
+
+
 }
 
