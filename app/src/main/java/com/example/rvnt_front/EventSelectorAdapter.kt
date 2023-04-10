@@ -1,13 +1,18 @@
 package com.example.rvnt_front
 
 
-import android.graphics.Color
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
+
+
+private var selectedItem = -1
+
 
 
 class EventSelectorAdapter (private val getActivity: BookTicketsActivity, private val selectEvent: SelectEvent):
@@ -23,7 +28,6 @@ class EventSelectorAdapter (private val getActivity: BookTicketsActivity, privat
 
     //
     override fun getItemCount(): Int {
-
 
         return selectEvent.date.size * selectEvent.time.size
     }
@@ -45,12 +49,22 @@ class EventSelectorAdapter (private val getActivity: BookTicketsActivity, privat
         holder.location.text = selectEvent.location
         holder.price.text= selectEvent.price.toString()
 
-        // ADD PROGRESSBAR
 
-        holder.cardView.setOnClickListener{
-            holder.cardView.setCardBackgroundColor(Color.GRAY)
-        }
+        // Set an onClickListener for cardItems
+       holder.cardView.setOnClickListener {
+
+               // Set the background color for the current item
+               // And change event's time color
+               holder.cardView.setCardBackgroundColor(ResourcesCompat.getColor(holder.itemView.resources, R.color.app_orange, null))
+               holder.eventTime.setTextColor(ResourcesCompat.getColor(holder.eventTime.resources, R.color.white, null))
+       }
+
     }
+
+
+
+
+
 
     class MyViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -59,6 +73,7 @@ class EventSelectorAdapter (private val getActivity: BookTicketsActivity, privat
         val location : TextView = itemView.findViewById(R.id.eventPlace)
         val price : TextView = itemView.findViewById(R.id.ticketPrice)
         val cardView : CardView = itemView.findViewById(R.id.bookEventCard)
+
 
 
     }

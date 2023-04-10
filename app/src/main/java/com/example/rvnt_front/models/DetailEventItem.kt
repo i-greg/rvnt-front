@@ -2,6 +2,7 @@ package com.example.rvnt_front.models
 
 import java.util.Dictionary
 
+// A data class for taking data from database using a get-API call
 data class DetailEventItem (
     val _id: String,
     val name: String,

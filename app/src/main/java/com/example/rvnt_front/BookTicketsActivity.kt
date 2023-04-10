@@ -1,22 +1,16 @@
 package com.example.rvnt_front
 
-import android.app.Activity
+
 import android.app.AlertDialog
-import android.app.Dialog
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
+import android.util.Patterns
 import android.view.View
 import android.widget.Button
-import com.example.rvnt_front.databinding.ActivityDetailEventBinding
-import com.bumptech.glide.Glide
 import com.example.rvnt_front.databinding.ActivityBookTicketsBinding
-import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.rvnt_front.api.ApiManager
+
 
 class BookTicketsActivity : AppCompatActivity() {
 
@@ -31,6 +25,13 @@ class BookTicketsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityBookTicketsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //
+        fullNameFocusListener()
+        emailFocusListener()
+        binding.bookTicketButton.setOnClickListener { bookForm() }
+
+
 
         //Take attributes for event
         val extras = intent.extras
@@ -111,6 +112,88 @@ class BookTicketsActivity : AppCompatActivity() {
         val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(this, 1)
         recyclerView!!.layoutManager = layoutManager
         recyclerView!!.adapter = cardBookAdapter
+    }
+
+    //
+    private  fun  emailFocusListener(){
+        binding.emailText.setOnFocusChangeListener { _, focused ->
+            if(!focused){
+                binding.email.helperText = validEmail()
+            }
+        }
+    }
+
+    //
+    private  fun  validEmail(): String? {
+        val email = binding.emailText.text.toString()
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            return "Invalid Email Address"
+        }
+
+        return  null
+    }
+
+    //
+    private  fun  fullNameFocusListener(){
+        binding.fullNameText.setOnFocusChangeListener { _, focused ->
+            if(!focused){
+                binding.fullName.helperText = validFullName()
+            }
+        }
+    }
+
+    //
+    private  fun  validFullName(): String? {
+        val fullName = binding.fullNameText.text.toString()
+        if (fullName.length==0){
+            return "Invalid full name input"
+        }
+
+        return  null
+    }
+
+    //
+    private fun bookForm(){
+        binding.fullName.helperText = validFullName()
+        binding.email.helperText = validEmail()
+
+        val validName = binding.fullName.helperText == null
+        val validEMail = binding.email.helperText == null
+
+        if (validName && validEMail)
+            resetForm()
+        else
+            invalidForm()
+
+    }
+
+    //
+    private  fun invalidForm(){
+        var message = ""
+        if (binding.fullName.helperText != null)
+            message += "\n\nFullname: " + binding.fullName.helperText
+        if(binding.email.helperText != null)
+            message += "\n\nEmail: " + binding.email.helperText
+
+        AlertDialog.Builder(this)
+            .setTitle("Invalid Form")
+            .setMessage(message)
+            .setNegativeButton("Book"){ _,_ ->
+                //nothing to do
+            }.show()
+    }
+
+    //
+    private  fun resetForm(){
+
+        AlertDialog.Builder(this)
+            .setPositiveButton("Book"){ _,_ ->
+                binding.fullNameText.text = null
+                binding.emailText.text = null
+
+                binding.fullName.helperText = getString(R.string.Required)
+                binding.email.helperText = getString(R.string.Required)
+            }.show()
     }
 
 }
