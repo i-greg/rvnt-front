@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.rvnt_front.results.DisplayResultsActivity
 import com.example.rvnt_front.results.Results
+import java.lang.Integer.min
 
 class CardViewAdapter (private val getActivity: HomeActivity, private val eventList: List<Event>):
     RecyclerView.Adapter<CardViewAdapter.MyViewHolder>(){
@@ -23,7 +24,8 @@ class CardViewAdapter (private val getActivity: HomeActivity, private val eventL
     }
 
     override fun getItemCount(): Int {
-        return eventList.size
+        //Returning list size with a maximum of 8
+        return min(eventList.size, 8)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
