@@ -161,7 +161,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bookTicketButton"
         app:layout_constraintEnd_toStartOf="@+id/fullName"
         app:layout_constraintTop_toBottomOf="@+id/ticketsNumber"
-        app:layout_constraintVertical_bias="0.255"
+        app:layout_constraintVertical_bias="0.279"
         app:srcCompat="@drawable/name_icon_foreground" />
 
     <ImageView

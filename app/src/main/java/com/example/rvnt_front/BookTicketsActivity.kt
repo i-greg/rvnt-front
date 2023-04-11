@@ -169,31 +169,21 @@ class BookTicketsActivity : AppCompatActivity() {
 
     //
     private  fun invalidForm(){
-        var message = ""
-        if (binding.fullName.helperText != null)
-            message += "\n\nFullname: " + binding.fullName.helperText
-        if(binding.email.helperText != null)
-            message += "\n\nEmail: " + binding.email.helperText
 
-        AlertDialog.Builder(this)
-            .setTitle("Invalid Form")
-            .setMessage(message)
-            .setNegativeButton("Book"){ _,_ ->
-                //nothing to do
-            }.show()
+        binding.bookTicketButton.isEnabled = false
     }
 
     //
     private  fun resetForm(){
 
-        AlertDialog.Builder(this)
-            .setPositiveButton("Book"){ _,_ ->
                 binding.fullNameText.text = null
                 binding.emailText.text = null
 
-                binding.fullName.helperText = getString(R.string.Required)
-                binding.email.helperText = getString(R.string.Required)
-            }.show()
+            //    binding.fullName.helperText = getString(R.string.Required)
+            //    binding.email.helperText = getString(R.string.Required)
+
+        binding.bookTicketButton.isEnabled = true
+
     }
 
 }
