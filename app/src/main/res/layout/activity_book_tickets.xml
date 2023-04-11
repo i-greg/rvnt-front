@@ -1,158 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- A RecyclerView for the available event's dates-->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/datesList"
-        android:layout_width="wrap_content"
-        android:layout_height="370dp"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="2dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/ticketsNumberPicker"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth="360dp" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <!-- A button where the user can proceed with the ticket's payment
-     through his email.-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/datesList"
+            android:layout_width="match_parent"
+            android:layout_height="380dp"
+            android:layout_margin="10dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/ticketsNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginStart="20dp"
-        android:text="Booking Tickets:"
-        android:textColor="@color/app_orange"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editFullName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datesList"
-        app:layout_constraintVertical_bias="0.538" />
+        <LinearLayout
+            android:id="@+id/linear_tickets"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/datesList"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
-    <!-- A NumberPicker for ticket's number-->
+            <TextView
+                android:id="@+id/ticketsNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:text="Booking Tickets:"
+                android:textColor="@color/app_orange"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-    <!-- An EditText for user's full name -->
-    <NumberPicker
-        android:id="@+id/ticketsNumberPicker"
-        android:layout_width="wrap_content"
-        android:layout_height="120dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="100dp"
-        android:backgroundTint="@color/white"
-        android:theme="@style/appColorTheme"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.684"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.551" />
+            <NumberPicker
+                android:id="@+id/ticketsNumberPicker"
+                android:layout_width="wrap_content"
+                android:layout_marginEnd="50dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:layout_marginStart="50dp"
+                android:backgroundTint="@color/white"
+                android:theme="@style/appColorTheme" />
+        </LinearLayout>
 
-    <EditText
-        android:id="@+id/editFullName"
-        android:layout_width="240dp"
-        android:layout_height="48dp"
-        android:backgroundTint="@color/app_orange"
-        android:inputType="text"
-        android:hint="Full Name"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/bookTicketButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.292"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datesList"
-        app:layout_constraintVertical_bias="0.523" />
+        <LinearLayout
+            android:id="@+id/linear_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linear_tickets">
 
+            <ImageView
+                android:id="@+id/personImage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/name_icon_foreground" />
 
-    <!-- A button for tickets book-->
-    <Button
-        android:id="@+id/bookTicketButton"
-        android:layout_width="170dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="10dp"
-        android:enabled="false"
-        android:backgroundTint="@color/app_orange"
-        android:text="Book"
-        android:textColor="#ffffff"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/name_til"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:helperText="@string/Required"
+                app:helperTextTextColor="@color/app_orange">
 
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/name_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:hint="Full name"
+                    android:inputType="textEmailAddress"
+                    android:lines="1"
+                    android:textColorHint="@color/white"
+                    android:theme="@style/appColorTheme"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- A button for tickets cancel-->
-    <Button
-        android:id="@+id/cancelTicketButton"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="171dp"
-        android:layout_marginEnd="20dp"
-        android:backgroundTint="#ffffff"
-        android:text="Cancel"
-        android:textColor="@color/app_orange"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/bookTicketButton"
-        app:layout_constraintTop_toBottomOf="@+id/editEmail"
-        app:layout_constraintVertical_bias="0.818" />
+        </LinearLayout>
 
-    <!-- An EditText for user's Email -->
+        <LinearLayout
+            android:id="@+id/linear_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linear_name">
 
-    <EditText
-        android:id="@+id/editEmail"
-        android:layout_width="240dp"
-        android:layout_height="48dp"
-        android:backgroundTint="@color/app_orange"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:hint="E-mail"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/bookTicketButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.292"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editFullName"
-        app:layout_constraintVertical_bias="0.285" />
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/email_icon_foreground" />
 
 
-    <!-- A person icon-->
-    <ImageView
-        android:id="@+id/personImage"
-        android:layout_width="49dp"
-        android:layout_height="62dp"
-        android:layout_marginStart="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/bookTicketButton"
-        app:layout_constraintEnd_toStartOf="@+id/editFullName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ticketsNumber"
-        app:layout_constraintVertical_bias="0.263"
-        app:srcCompat="@drawable/name_icon_foreground" />
-
-    <!-- An email icon -->
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="44dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="7dp"
-        app:layout_constraintBottom_toTopOf="@+id/bookTicketButton"
-        app:layout_constraintEnd_toStartOf="@+id/editEmail"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ticketsNumber"
-        app:layout_constraintVertical_bias="0.691"
-        app:srcCompat="@drawable/email_icon_foreground" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/email_til"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:helperText="@string/Required"
+                app:helperTextTextColor="@color/app_orange">
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:backgroundTint="@color/white"
+                    android:hint="E-mail"
+                    android:inputType="textEmailAddress"
+                    android:lines="1"
+                    android:textColorHint="@color/white"
+                    android:theme="@style/appColorTheme"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linear_email">
+
+            <Button
+                android:id="@+id/bookTicketButton"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/app_orange"
+                android:text="Book"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/cancelTicketButton"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#ffffff"
+                android:text="Cancel"
+                android:textAllCaps="false"
+                android:textColor="@color/app_orange"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
