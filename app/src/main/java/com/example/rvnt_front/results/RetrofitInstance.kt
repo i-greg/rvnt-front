@@ -12,11 +12,13 @@ object RetrofitInstance {
     // our api calls
 
 
+    //https://mockend.com
+    //    https://rvnt-api.onrender.com/
     //.baseUrl("https://jsonplaceholder.typicode.com")
 
     val api: ResultsApi by lazy {
         Retrofit.Builder()
-            .baseUrl("https://mockend.com")
+            .baseUrl("https://rvnt-api.onrender.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ResultsApi::class.java)

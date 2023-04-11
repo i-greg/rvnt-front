@@ -1,19 +1,14 @@
 package com.example.rvnt_front
 
 /* A UI for event's detail*/
-import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import com.example.rvnt_front.databinding.ActivityDetailEventBinding
 import com.bumptech.glide.Glide
 import com.example.rvnt_front.api.ApiManager
 import com.example.rvnt_front.models.CityItem
-import com.example.rvnt_front.models.DetailEventItem
-import com.example.rvnt_front.results.DisplayResultsActivity
-import com.example.rvnt_front.results.ResultsItem
 
 class DetailEventActivity : AppCompatActivity() {
 
