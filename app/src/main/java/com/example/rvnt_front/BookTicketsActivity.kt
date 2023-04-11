@@ -15,8 +15,6 @@ import androidx.recyclerview.widget.RecyclerView
 class BookTicketsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBookTicketsBinding
-    private lateinit var bookTicketButton: Button              // A variable for Book button
-    private lateinit var cancelTicketButton: Button            // A variable for Cancel button
     private var selectEvent = EventSelectorAdapter.SelectEvent(ArrayList(), ArrayList(), "", 0, 0, 0)
     private var recyclerView: RecyclerView? = null
     private var cardBookAdapter: EventSelectorAdapter? = null
@@ -29,7 +27,7 @@ class BookTicketsActivity : AppCompatActivity() {
         //
         fullNameFocusListener()
         emailFocusListener()
-        binding.bookTicketButton.setOnClickListener { bookForm() }
+
 
 
 
@@ -76,9 +74,20 @@ class BookTicketsActivity : AppCompatActivity() {
         val book = binding.bookTicketButton
         val cancel = binding.cancelTicketButton
 
+
+
+        //Set book button
+        val name = binding.nameEdit.text.toString()
+        val email = binding.emailEdit.text
+
+
+        //book.isEnabled = name.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()
+
+
         //Set a clickListener for Book button
         //Where a success message will be displayed
         book.setOnClickListener {
+
 
             val view = View.inflate(this@BookTicketsActivity, R.layout.activity_success_message, null)
             val builder = AlertDialog.Builder(this@BookTicketsActivity)
@@ -89,6 +98,7 @@ class BookTicketsActivity : AppCompatActivity() {
 
             dialog.show()
             dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
         }
 
 
@@ -116,16 +126,16 @@ class BookTicketsActivity : AppCompatActivity() {
 
     //
     private  fun  emailFocusListener(){
-        binding.emailText.setOnFocusChangeListener { _, focused ->
+        binding.emailEdit.setOnFocusChangeListener { _, focused ->
             if(!focused){
-                binding.email.helperText = validEmail()
+                binding.emailTil.helperText = validEmail()
             }
         }
     }
 
     //
     private  fun  validEmail(): String? {
-        val email = binding.emailText.text.toString()
+        val email = binding.emailEdit.text.toString()
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             return "Invalid Email Address"
         }
@@ -135,36 +145,37 @@ class BookTicketsActivity : AppCompatActivity() {
 
     //
     private  fun  fullNameFocusListener(){
-        binding.fullNameText.setOnFocusChangeListener { _, focused ->
+        binding.nameEdit.setOnFocusChangeListener { _, focused ->
             if(!focused){
-                binding.fullName.helperText = validFullName()
+                binding.nameTil.helperText = validFullName()
             }
         }
     }
 
     //
     private  fun  validFullName(): String? {
-        val fullName = binding.fullNameText.text.toString()
-        if (fullName.length==0){
+        val fullName = binding.nameEdit.text.toString()
+        if (fullName.isEmpty()){
             return "Invalid full name input"
         }
-
         return  null
     }
 
     //
-    private fun bookForm(){
-        binding.fullName.helperText = validFullName()
-        binding.email.helperText = validEmail()
+    private fun bookForm(): Boolean {
+        binding.nameTil.helperText = validFullName()
+        binding.emailTil.helperText = validEmail()
 
-        val validName = binding.fullName.helperText == null
-        val validEMail = binding.email.helperText == null
+        val validName = binding.nameTil.helperText == null
+        val validEMail = binding.emailTil.helperText == null
 
-        if (validName && validEMail)
+        return if (validName && validEMail) {
             resetForm()
-        else
+            true
+        }else {
             invalidForm()
-
+            false
+        }
     }
 
     //
@@ -176,11 +187,11 @@ class BookTicketsActivity : AppCompatActivity() {
     //
     private  fun resetForm(){
 
-                binding.fullNameText.text = null
-                binding.emailText.text = null
+        binding.nameEdit.text = null
+        binding.emailEdit.text = null
 
-            //    binding.fullName.helperText = getString(R.string.Required)
-            //    binding.email.helperText = getString(R.string.Required)
+            binding.nameTil.helperText = getString(R.string.Required)
+            binding.emailTil.helperText = getString(R.string.Required)
 
         binding.bookTicketButton.isEnabled = true
 
