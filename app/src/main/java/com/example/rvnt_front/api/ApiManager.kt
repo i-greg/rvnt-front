@@ -79,7 +79,7 @@ class ApiManager {
         })
     }
 
-    // A function in order to get event's detail from DataBase for DetailEventActivity UI
+    // A function to get event's detail from DataBase for DetailEventActivity UI
     fun getDetailEventItem(eventID: String, callback: (DetailEventItem) -> Unit) {
         apiInterface.getDetailEventItem(eventID).enqueue(object : Callback<DetailEventItem> {
             override fun onResponse(
@@ -93,7 +93,7 @@ class ApiManager {
                         ArrayList(),"",
                         CityItem("",""),CategoryItem("",""), "", 0, 0, 0))
                 } else {
-                    Log.e("ApiManager", "Failed to get carousel data: ${response.message()}")
+                    Log.e("ApiManager", "Failed to get event's detail data: ${response.message()}")
                 }
             }
 

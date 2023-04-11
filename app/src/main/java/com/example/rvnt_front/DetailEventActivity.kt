@@ -2,9 +2,12 @@ package com.example.rvnt_front
 
 /* A UI for event's detail*/
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.ImageView
 import com.example.rvnt_front.databinding.ActivityDetailEventBinding
 import com.bumptech.glide.Glide
 import com.example.rvnt_front.api.ApiManager
@@ -18,9 +21,10 @@ class DetailEventActivity : AppCompatActivity() {
     private var ticketsRemaining = 0
     private var eventPrice = 0
     private var eventDate = ArrayList<String>()
-    private var eventTime = ""
+    private var eventTime = ArrayList<String>()
     private var eventLocation = ""
     private var cityId: CityItem = CityItem("","")
+
 
 
 
@@ -48,27 +52,31 @@ class DetailEventActivity : AppCompatActivity() {
                 val eventCategory = eventData.category_id
                 val eventImg = eventData.image
                 val eventDescription = eventData.description
+
+                //Initialize variables for BookTicketsActivity
                 eventDate = eventData.date
                 eventLocation = eventData.location
                 ticketsTotal = eventData.tickets_total
                 ticketsRemaining = eventData.tickets_remaining
                 eventPrice = eventData.price
-                eventTime = eventData.time[0]
+                eventTime = eventData.time
 
-
+                //Send variables to BookTicketsActivity
                 binding.eventTitle.text = eventTitle
                 binding.eventDate.text = eventDate[0]
                 binding.eventLocation.text = eventLocation
                 binding.eventCategory.text = eventCategory.category
                 binding.eventDescription.text = eventDescription
-                Glide.with(this@DetailEventActivity).load(eventImg).centerCrop().into(binding.imageEvent)
+
+
+                Glide.with(this@DetailEventActivity).load(eventImg).optionalCenterCrop().into(binding.imageEvent)
 
 
                 //Set TICKETS button unclickable in case event is sold out
                 if (ticketsRemaining <= 0){
                     binding.tickets.isEnabled = false
                     binding.tickets.setText("SOLD OUT")
-                    binding.tickets.setBackgroundColor(Color.BLACK)
+                    binding.tickets.setBackgroundColor(Color.GRAY)
                 }
             }
         }
