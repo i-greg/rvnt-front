@@ -3,6 +3,7 @@ package com.example.rvnt_front.api
 import android.util.Log
 import com.example.rvnt_front.BASE_URL
 import com.example.rvnt_front.models.*
+
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -101,4 +102,56 @@ class ApiManager {
             }
         })
     }
+
+
+    // 10/4/23 - Categories
+    fun getCategoryResultsItem(_id: String, callback: (List<ResultsItem>) -> Unit) {
+        apiInterface.getCategoryResultsItem(_id).enqueue(object : Callback<List<ResultsItem>> {
+            override fun onResponse(
+                call: Call <List<ResultsItem>>,
+                response: Response<List<ResultsItem>>
+            ) {
+                if (response.isSuccessful) {
+                    val resultData = response.body()
+                    callback(resultData ?: emptyList())
+
+                } else {
+                    Log.e("ApiManager", "Failed to get result 1 data: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<List<ResultsItem>>, t: Throwable) {
+                Log.e("ApiManager", "Failed to get result 2 data: ${t.message}")
+
+            }
+
+        })
+    }
+
+
+    // 10/4/23 - Cities
+    fun getCityResultsItem(_id: String, callback: (List<ResultsItem>) -> Unit) {
+        apiInterface.getCityResultsItem(_id).enqueue(object : Callback<List<ResultsItem>> {
+            override fun onResponse(
+                call: Call <List<ResultsItem>>,
+                response: Response<List<ResultsItem>>
+            ) {
+                if (response.isSuccessful) {
+                    val resultData = response.body()
+                    callback(resultData ?: emptyList())
+
+                } else {
+                    Log.e("ApiManager", "Failed to get result 1 data: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<List<ResultsItem>>, t: Throwable) {
+                Log.e("ApiManager", "Failed to get result 2 data: ${t.message}")
+
+            }
+
+        })
+    }
+
+
 }
