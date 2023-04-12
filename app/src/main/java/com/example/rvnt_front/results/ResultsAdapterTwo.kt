@@ -14,7 +14,6 @@ import com.example.rvnt_front.results.DisplayResultsActivity
 
 class ResultsAdapterTwo(private val getActivity: DisplayResultsActivity, private val eventList: List<ResultsItem>) : RecyclerView.Adapter<ResultsAdapterTwo.ResultsViewHolder>() {
 
-
     inner class ResultsViewHolder(val binding: ItemResultBinding) : RecyclerView.ViewHolder(binding.root) {
 
         // 31/3/2023

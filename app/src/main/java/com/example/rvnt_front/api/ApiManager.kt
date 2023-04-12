@@ -141,7 +141,9 @@ class ApiManager {
                     callback(resultData ?: emptyList())
 
                 } else {
+                    val emptyList = emptyList<ResultsItem>()
                     Log.e("ApiManager", "Failed to get result 1 data: ${response.message()}")
+                    callback(emptyList)
                 }
             }
 

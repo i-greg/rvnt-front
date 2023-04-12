@@ -38,8 +38,14 @@ class DisplayResultsActivity : AppCompatActivity(), ResultsAdapterTwo.OnItemClic
 
         if (extras != null && extras.containsKey("category_id")) {
             val  value = extras.getString("category_id")
+            val categoryName = extras.getString("criteria")
             val apiManager = ApiManager()
             apiManager.getCategoryResultsItem(value!!) { eventData ->
+                if (eventData.isNotEmpty()) {
+                    binding.tvResultsCount.text = "Results for $categoryName: ${eventData.size}"
+                }else{
+                    binding.tvResultsCount.text = "No results found"
+                }
                 setupRecyclerView(eventData)
 
                 // 31/3/2023
@@ -50,9 +56,14 @@ class DisplayResultsActivity : AppCompatActivity(), ResultsAdapterTwo.OnItemClic
             }
         } else {
             val  value2 = extras?.getString("city_id")
-
+            val cityName = extras?.getString("criteria")
             val apiManager = ApiManager()
             apiManager.getCityResultsItem(value2!!) { eventData ->
+                if (eventData.isNotEmpty()) {
+                    binding.tvResultsCount.text = "Results in $cityName: ${eventData.size}"
+                }else{
+                    binding.tvResultsCount.text = "No results found"
+                }
                 setupRecyclerView(eventData)
                 // 31/3/2023
                 // setting the click listener for the adapter
