@@ -37,7 +37,7 @@ class CarouselHelper(private val viewPager2: ViewPager2, private val binding: Ac
 
         //Schedule auto scrolling
         runnable = Runnable {
-            if (isAutoScrolling) {
+            if (isAutoScrolling && (viewPager2.adapter?.itemCount ?: 0) > 0) {
                 viewPager2.currentItem = (viewPager2.currentItem + 1) % viewPager2.adapter!!.itemCount // Fix error
             }
             handler.postDelayed(runnable, AUTO_SCROLL_DELAY)

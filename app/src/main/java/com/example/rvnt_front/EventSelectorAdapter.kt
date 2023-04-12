@@ -47,16 +47,23 @@ class EventSelectorAdapter (private val getActivity: BookTicketsActivity, privat
         holder.eventDate.text = datesAndTimes[position].date
         holder.eventTime.text = datesAndTimes[position].time
         holder.location.text = selectEvent.location
-        holder.price.text= selectEvent.price.toString()
+        holder.price.text = selectEvent.price.toString()
+
+        if (selectedItem == position) {
+            holder.cardView.setCardBackgroundColor(ResourcesCompat.getColor(holder.itemView.resources, R.color.app_orange, null))
+            holder.eventTime.setTextColor(ResourcesCompat.getColor(holder.eventTime.resources, R.color.white, null))
+        } else {
+            holder.cardView.setCardBackgroundColor(ResourcesCompat.getColor(holder.itemView.resources, R.color.white, null))
+            holder.eventTime.setTextColor(ResourcesCompat.getColor(holder.eventTime.resources, R.color.app_orange, null))
+        }
 
 
         // Set an onClickListener for cardItems
        holder.cardView.setOnClickListener {
 
-               // Set the background color for the current item
-               // And change event's time color
-               holder.cardView.setCardBackgroundColor(ResourcesCompat.getColor(holder.itemView.resources, R.color.app_orange, null))
-               holder.eventTime.setTextColor(ResourcesCompat.getColor(holder.eventTime.resources, R.color.white, null))
+
+           selectedItem = holder.bindingAdapterPosition
+           notifyDataSetChanged()
        }
 
     }

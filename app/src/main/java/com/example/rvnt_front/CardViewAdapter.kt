@@ -42,6 +42,7 @@ class CardViewAdapter (private val getActivity: HomeActivity, private val eventL
         holder.cardView.setOnClickListener{
 
             intent.putExtra("category_id", eventList[position].id)
+            intent.putExtra("criteria", eventList[position].title)
             getActivity.startActivity(intent)
 
             //Toast.makeText(getActivity, eventList[position].title, Toast.LENGTH_LONG).show()

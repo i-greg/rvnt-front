@@ -2,6 +2,7 @@ package com.example.rvnt_front
 
 import android.content.Intent
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.widget.*
 import com.example.rvnt_front.databinding.ActivityHomeBinding
@@ -68,11 +69,12 @@ class SearchHelper(private val searchView: SearchView,
 
                 adapterView, view, position, id ->
 
-            val selectedItem = suggestionData[position]
-
+            val selectedItem = suggestionAdapter.getItem(position) // use the adapter to get the selected item
+            val filteredPosition = suggestionData.indexOfFirst { it.city == selectedItem } // get the index of the selected item in the filtered list
             //to open a new activity when item in a list is clicked
             val intent = Intent(suggestionListView.context, DisplayResultsActivity::class.java)
-            intent.putExtra("city_id", selectedItem.id)
+            intent.putExtra("city_id", suggestionData[filteredPosition].id)
+            intent.putExtra("criteria", suggestionData[filteredPosition].city)
             suggestionListView.context.startActivity(intent)
 
         }
