@@ -73,6 +73,7 @@ class BookTicketsActivity : AppCompatActivity() {
         //Creation of successfully booking tickets as pop up message
         val book = binding.bookTicketButton
         val cancel = binding.cancelTicketButton
+        val back = binding.backButton
 
 
 
@@ -113,6 +114,7 @@ class BookTicketsActivity : AppCompatActivity() {
 
 
 
+
         //Set a clickListener for Cancel button
         //In order to navigate to DetailEventActivity
         cancel.setOnClickListener {
@@ -120,7 +122,15 @@ class BookTicketsActivity : AppCompatActivity() {
             this.onBackPressed()
         }
 
+        //
+        back.setOnClickListener {
+
+            this.onBackPressed()
+        }
+
     }
+
+
 
 
     //
