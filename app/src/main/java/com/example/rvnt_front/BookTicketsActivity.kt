@@ -96,10 +96,21 @@ class BookTicketsActivity : AppCompatActivity() {
 
             val  dialog = builder.create()
 
-            dialog.show()
-            dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
+            //enable button only for valid input
+            if (bookForm()) {
+                dialog.show()
+                dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+                //close popup message
+                val okButton = view.findViewById<Button>(R.id.okButton)
+                okButton.setOnClickListener {
+                    dialog.dismiss()
+                }
+            }
         }
+
+
 
 
         //Set a clickListener for Cancel button
