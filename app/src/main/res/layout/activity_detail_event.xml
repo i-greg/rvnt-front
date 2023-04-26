@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_gravity="center_vertical"
-    tools:context=".DetailEventActivity">
+    tools:context=".DetailEventActivity"
+    android:background="@color/white">
 
     <!--Create Image Component for the event's detailed description-->
 
@@ -153,6 +154,18 @@
         android:textAlignment="center"
         android:textSize="20dp"
         android:textColor="@color/white" />
+
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="34dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_shape"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/arrow_back"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

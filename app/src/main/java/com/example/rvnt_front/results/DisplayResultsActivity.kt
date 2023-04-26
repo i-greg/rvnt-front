@@ -30,6 +30,13 @@ class DisplayResultsActivity : AppCompatActivity(), ResultsAdapterTwo.OnItemClic
         binding = ActivityDisplayResultsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //
+        val back = binding.backButton
+
+        back.setOnClickListener {
+
+            this.onBackPressed()
+        }
 //
 
 
