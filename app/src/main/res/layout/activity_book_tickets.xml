@@ -10,6 +10,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
+        <!-- A back button that navigates to previous page.-->
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="34dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_shape"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/arrow_back" />
+
+
+        <!-- A RecyclerView that displays the available dates and times for the event.-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/datesList"
             android:layout_width="match_parent"
@@ -22,6 +37,10 @@
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/backButton" />
 
+
+
+        <!-- A NumberPicker where user can choose the number of tickets
+        in order to book them.-->
         <LinearLayout
             android:id="@+id/linear_tickets"
             android:layout_width="match_parent"
@@ -53,6 +72,8 @@
                 android:theme="@style/appColorTheme" />
         </LinearLayout>
 
+
+        <!-- A Layout for user's Fullname in order to book tickets.-->
         <LinearLayout
             android:id="@+id/linear_name"
             android:layout_width="match_parent"
@@ -94,6 +115,9 @@
 
         </LinearLayout>
 
+
+        <!-- A Layout for user's E-mail in order to book tickets
+        and receive an email where he can proceed with payment.-->
         <LinearLayout
             android:id="@+id/linear_email"
             android:layout_width="match_parent"
@@ -136,6 +160,8 @@
 
         </LinearLayout>
 
+
+        <!-- A Layout for necessary buttons: Book and Cancel.-->
         <LinearLayout
             android:id="@+id/linear_buttons"
             android:layout_width="match_parent"
@@ -148,6 +174,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/linear_email">
 
+
+            <!-- A Book Button that allows user to book tickets, only if
+            the FullName and E-Mail fields are correctly submitted.
+            On Button click, a pop up message appears, that informs user for successful
+            tickets booking and payment's email send.-->
             <Button
                 android:id="@+id/bookTicketButton"
                 android:layout_width="wrap_content"
@@ -161,6 +192,10 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
+
+            <!-- A Cancel Button that allows user to cancel his activity in
+            activity_book_tickets UI.
+            On Button click, user navigates to previous page-->
             <Button
                 android:id="@+id/cancelTicketButton"
                 android:layout_width="wrap_content"
@@ -174,16 +209,7 @@
                 android:textSize="16sp" />
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/backButton"
-            android:layout_width="34dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/button_shape"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/arrow_back" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

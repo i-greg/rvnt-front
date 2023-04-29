@@ -9,18 +9,23 @@
 
 
 
+    <!-- A ViewPager that displays the most popular events
+    based on...-->
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager2"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_alignParentTop="true"/>
 
+
+    <!-- An Indicator for the ViewPager with most popular events.-->
     <me.relex.circleindicator.CircleIndicator3
         android:id="@+id/indicator"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_alignBottom="@+id/view_pager2" />
 
+    <!-- A SearchView where user can search events in a city.-->
     <SearchView
         android:id="@+id/search_view"
         android:layout_width="match_parent"
@@ -32,17 +37,18 @@
         android:queryHint="Search Event City"
         android:backgroundTint="@color/white"/>
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_card"
+    <!-- A ListView that displays the available cities with events based on user's search.-->
+    <ListView
+        android:id="@+id/lv_suggestions"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/search_view"
-        android:layout_marginTop="64dp"
-        android:layout_marginBottom="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
+        android:layout_marginEnd="16dp"
+        android:visibility="gone"
+        android:background="@color/white"/>
 
+    <!-- A text view for Categories.-->
     <TextView
         android:id="@+id/tvCategory"
         android:layout_below="@id/search_view"
@@ -55,16 +61,17 @@
         android:textStyle="bold"
         android:textSize="24dp"/>
 
-    <ListView
-        android:id="@+id/lv_suggestions"
+
+    <!-- A RecyclerView that displays all the available event categories.-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_card"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/search_view"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:visibility="gone"
-        android:background="@color/white"/>
-
+        android:layout_marginEnd="16dp"/>
 
 
 </RelativeLayout>
