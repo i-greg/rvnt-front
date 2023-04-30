@@ -50,7 +50,7 @@
         app:layout_constraintTop_toBottomOf="@+id/eventTitle"
         app:srcCompat="@drawable/ic_calendar_foreground" />
 
-    <!-- A text view for event's date-->
+    <!-- A TextView for event's date-->
     <TextView
         android:id="@+id/eventDate"
         android:layout_width="wrap_content"
@@ -73,7 +73,7 @@
         app:layout_constraintTop_toBottomOf="@+id/calendarImage"
         app:srcCompat="@drawable/ic_location_foreground" />
 
-    <!-- A text view for event's location-->
+    <!-- A TextView for event's location-->
     <TextView
         android:id="@+id/eventLocation"
         android:layout_width="wrap_content"
@@ -95,7 +95,7 @@
         app:layout_constraintTop_toBottomOf="@+id/locationImage"
         app:srcCompat="@drawable/category_button_foreground" />
 
-    <!-- A text view for event's location-->
+    <!-- A TextView for event's location-->
     <TextView
         android:id="@+id/eventCategory"
         android:layout_width="wrap_content"
