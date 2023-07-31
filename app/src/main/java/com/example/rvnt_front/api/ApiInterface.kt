@@ -7,15 +7,19 @@ import retrofit2.http.Path
 
 interface ApiInterface {
 
+    // A function in order to get the 5 most popular events for carusel
     @GET("events/popular/5")
     fun getCarouselData(): Call<List<CarouselDataItem>>
 
+    // A function in order to get categories
     @GET("categories")
     fun getCategoriesData(): Call<List<CategoriesDataItem>>
 
+    // A function in order to get cities for searchbar
     @GET("cities")
     fun getSuggestionData(): Call<List<SuggestionsDataItem>>
 
+    // A function in order to get event's data
     @GET("events/{eventID}")
     fun getDetailEventItem(@Path("eventID") eventID: String): Call<DetailEventItem>
 

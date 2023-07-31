@@ -19,6 +19,7 @@ class ApiManager {
 
     private val apiInterface: ApiInterface = retrofit.create(ApiInterface::class.java)
 
+    // A function to get data for carusel
     fun getCarouselData(callback: (List<CarouselDataItem>) -> Unit) {
         apiInterface.getCarouselData().enqueue(object : Callback<List<CarouselDataItem>> {
             override fun onResponse(
@@ -39,6 +40,7 @@ class ApiManager {
         })
     }
 
+    // A function to get data for category items
     fun getCardData(callback: (List<CategoriesDataItem>) -> Unit) {
         apiInterface.getCategoriesData().enqueue(object : Callback<List<CategoriesDataItem>> {
             override fun onResponse(
@@ -59,6 +61,7 @@ class ApiManager {
         })
     }
 
+    // A function to get data for searchbar
     fun getSuggestionData(callback: (List<SuggestionsDataItem>) -> Unit) {
         apiInterface.getSuggestionData().enqueue(object : Callback<List<SuggestionsDataItem>> {
             override fun onResponse(
@@ -98,13 +101,13 @@ class ApiManager {
             }
 
             override fun onFailure(call: Call<DetailEventItem>, t: Throwable) {
-                Log.e("ApiManager", "Failed to get carousel data: ${t.message}")
+                Log.e("ApiManager", "Failed to get event's detail data: ${t.message}")
             }
         })
     }
 
 
-    // 10/4/23 - Categories
+    // A function in order to get events' list through categories cards
     fun getCategoryResultsItem(_id: String, callback: (List<ResultsItem>) -> Unit) {
         apiInterface.getCategoryResultsItem(_id).enqueue(object : Callback<List<ResultsItem>> {
             override fun onResponse(
@@ -129,7 +132,7 @@ class ApiManager {
     }
 
 
-    // 10/4/23 - Cities
+    // A function in order to get events' list through city search
     fun getCityResultsItem(_id: String, callback: (List<ResultsItem>) -> Unit) {
         apiInterface.getCityResultsItem(_id).enqueue(object : Callback<List<ResultsItem>> {
             override fun onResponse(
@@ -142,13 +145,13 @@ class ApiManager {
 
                 } else {
                     val emptyList = emptyList<ResultsItem>()
-                    Log.e("ApiManager", "Failed to get result 1 data: ${response.message()}")
+                    Log.e("ApiManager", "Failed to get events' list data: ${response.message()}")
                     callback(emptyList)
                 }
             }
 
             override fun onFailure(call: Call<List<ResultsItem>>, t: Throwable) {
-                Log.e("ApiManager", "Failed to get result 2 data: ${t.message}")
+                Log.e("ApiManager", "Failed to get events' list data: ${t.message}")
 
             }
 
