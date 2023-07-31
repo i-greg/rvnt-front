@@ -19,7 +19,7 @@ class ApiManager {
 
     private val apiInterface: ApiInterface = retrofit.create(ApiInterface::class.java)
 
-    // A function to get data for carusel
+    // A function to get data for carousel
     fun getCarouselData(callback: (List<CarouselDataItem>) -> Unit) {
         apiInterface.getCarouselData().enqueue(object : Callback<List<CarouselDataItem>> {
             override fun onResponse(

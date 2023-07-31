@@ -7,7 +7,7 @@ import retrofit2.http.Path
 
 interface ApiInterface {
 
-    // A function in order to get the 5 most popular events for carusel
+    // A function in order to get the 5 most popular events for carousel
     @GET("events/popular/5")
     fun getCarouselData(): Call<List<CarouselDataItem>>
 
