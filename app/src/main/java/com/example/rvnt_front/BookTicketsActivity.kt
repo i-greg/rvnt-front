@@ -24,14 +24,14 @@ class BookTicketsActivity : AppCompatActivity() {
         binding = ActivityBookTicketsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //
+        // Listeners for user's fullName and e-mail input
         fullNameFocusListener()
         emailFocusListener()
 
 
 
 
-        //Take attributes for event
+        //Take attributes for event. Event's details are required for ticket's selection in RecyclerView.
         val extras = intent.extras
         if (extras != null) {
 
@@ -58,7 +58,9 @@ class BookTicketsActivity : AppCompatActivity() {
             //Initialize minimumValue
             binding.ticketsNumberPicker.minValue = 1
 
-            //Check for remaining tickets' availability in NumberPicker
+            /* Check for remaining tickets' availability in NumberPicker and set limits in tickets' number
+             * that can be bought.
+             */
             if (ticketsRemaining < 10) {
                 binding.ticketsNumberPicker.maxValue = ticketsRemaining
             }else{
@@ -98,7 +100,7 @@ class BookTicketsActivity : AppCompatActivity() {
             val  dialog = builder.create()
 
 
-            //enable button only for valid input
+            //Enable button only for valid input
             if (bookForm()) {
                 dialog.show()
                 dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
@@ -116,7 +118,7 @@ class BookTicketsActivity : AppCompatActivity() {
 
 
         //Set a clickListener for Cancel button
-        //In order to navigate to DetailEventActivity
+        //in order to navigate to DetailEventActivity
         cancel.setOnClickListener {
 
             this.onBackPressed()
@@ -133,10 +135,8 @@ class BookTicketsActivity : AppCompatActivity() {
 
 
 
-    //
+    // Set up cardView
     private fun setupCard(selectEvent: EventSelectorAdapter.SelectEvent){
-        //CardView Functionality
-        //selectEvent = EventSelectorAdapter.SelectEvent()
 
         recyclerView = binding.datesList
         cardBookAdapter = EventSelectorAdapter(this@BookTicketsActivity, selectEvent)
@@ -145,7 +145,7 @@ class BookTicketsActivity : AppCompatActivity() {
         recyclerView!!.adapter = cardBookAdapter
     }
 
-    //
+    // Listeners for user's e-mail input
     private  fun  emailFocusListener(){
         binding.emailEdit.setOnFocusChangeListener { _, focused ->
             if(!focused){
@@ -154,7 +154,7 @@ class BookTicketsActivity : AppCompatActivity() {
         }
     }
 
-    //
+    // Checks for valid user's e-mail input
     private  fun  validEmail(): String? {
         val email = binding.emailEdit.text.toString()
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
@@ -164,7 +164,7 @@ class BookTicketsActivity : AppCompatActivity() {
         return  null
     }
 
-    //
+    // Listeners for user's fullName input
     private  fun  fullNameFocusListener(){
         binding.nameEdit.setOnFocusChangeListener { _, focused ->
             if(!focused){
@@ -173,7 +173,7 @@ class BookTicketsActivity : AppCompatActivity() {
         }
     }
 
-    //
+    // Checks for valid username's input
     private  fun  validFullName(): String? {
         val fullName = binding.nameEdit.text.toString()
         if (fullName.isEmpty()){
@@ -182,7 +182,8 @@ class BookTicketsActivity : AppCompatActivity() {
         return  null
     }
 
-    //
+    // A function based that disables button in case of invalid input
+    // or resets form in case of book button click
     private fun bookForm(): Boolean {
         binding.nameTil.helperText = validFullName()
         binding.emailTil.helperText = validEmail()
@@ -199,13 +200,13 @@ class BookTicketsActivity : AppCompatActivity() {
         }
     }
 
-    //
+    // Disables book button when form is invalid completed
     private  fun invalidForm(){
 
         binding.bookTicketButton.isEnabled = false
     }
 
-    //
+    // Resets form when book button is clicked
     private  fun resetForm(){
 
         binding.nameEdit.text = null

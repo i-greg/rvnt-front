@@ -18,7 +18,7 @@ private var selectedItem = -1
 class EventSelectorAdapter (private val getActivity: BookTicketsActivity, private val selectEvent: SelectEvent):
     RecyclerView.Adapter<EventSelectorAdapter.MyViewHolder>(){
 
-    //
+    // A function in order to create the cards in RecyclerView where user can book tickets
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.book_event_card, parent, false)
 
@@ -26,14 +26,14 @@ class EventSelectorAdapter (private val getActivity: BookTicketsActivity, privat
     }
 
 
-    //
+    // A function that calculates the available dates and times for an event
     override fun getItemCount(): Int {
 
         return selectEvent.date.size * selectEvent.time.size
     }
 
 
-    //
+    // A function that passes the available event's details in RecyclerView's cards
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         var datesAndTimes = ArrayList<DatesTimes>()
 

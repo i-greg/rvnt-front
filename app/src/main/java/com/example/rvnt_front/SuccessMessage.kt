@@ -10,6 +10,7 @@ class SuccessMessage : AppCompatActivity() {
 
     private lateinit var binding: ActivitySuccessMessageBinding
 
+    // A function for pop-up message when user books tickets successfully
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySuccessMessageBinding.inflate(layoutInflater)
