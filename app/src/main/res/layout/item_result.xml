@@ -6,6 +6,9 @@
     android:layout_height="120dp">
 
 
+    <!--A CardView for  DisplayResultsActivity that displays either the events from
+    user's city search(e.g. Thessaloniki) or all the events in a category (e.g. Music). -->
+
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -29,6 +32,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
+            <!-- An ImageView for the event's image-->
             <ImageView
                 android:id="@+id/ivImage"
                 android:layout_width="120dp"
@@ -39,6 +44,8 @@
                 app:layout_constraintVertical_bias="0.5"
                 tools:srcCompat="@tools:sample/avatars" />
 
+
+            <!-- Create a TextView for event's title-->
             <TextView
                 android:id="@+id/tvTitle"
                 android:layout_width="260dp"
@@ -55,6 +62,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Placeholder" />
 
+
+            <!-- A TextView for event's date-->
             <TextView
                 android:id="@+id/tvDate"
                 android:layout_width="200dp"
@@ -69,6 +78,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Date" />
 
+
+            <!-- A TextView for event's city-->
             <TextView
                 android:id="@+id/tvCity"
                 android:layout_width="200dp"

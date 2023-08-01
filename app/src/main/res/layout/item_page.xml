@@ -6,7 +6,10 @@
     android:layout_height="match_parent">
 
 
+    <!-- A Layout for ViewPager in HomeActivity that displays
+    a popular event's image. -->
 
+    <!-- An ImageView for the event's image-->
     <ImageView
         android:id="@+id/ivImage"
         android:layout_width="match_parent"

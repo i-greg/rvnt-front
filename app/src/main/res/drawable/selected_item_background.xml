@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Creation of background for items in RecyclerView in BookTicketsActivity
+    with the available days for event.
+-->
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--Create the background for a the selected item in BookEventActivity-->

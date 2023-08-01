@@ -10,9 +10,7 @@
     tools:context=".DetailEventActivity"
     android:background="@color/white">
 
-    <!--Create Image Component for the event's detailed description-->
-
-
+    <!--Create Image Component for the event's image-->
     <ImageView
         android:id="@+id/imageEvent"
         android:layout_width="match_parent"
@@ -52,7 +50,7 @@
         app:layout_constraintTop_toBottomOf="@+id/eventTitle"
         app:srcCompat="@drawable/ic_calendar_foreground" />
 
-    <!-- A text view for event's date-->
+    <!-- A TextView for event's date-->
     <TextView
         android:id="@+id/eventDate"
         android:layout_width="wrap_content"
@@ -75,7 +73,7 @@
         app:layout_constraintTop_toBottomOf="@+id/calendarImage"
         app:srcCompat="@drawable/ic_location_foreground" />
 
-    <!-- A text view for event's location-->
+    <!-- A TextView for event's location-->
     <TextView
         android:id="@+id/eventLocation"
         android:layout_width="wrap_content"
@@ -97,7 +95,7 @@
         app:layout_constraintTop_toBottomOf="@+id/locationImage"
         app:srcCompat="@drawable/category_button_foreground" />
 
-    <!-- A text view for event's location-->
+    <!-- A TextView for event's location-->
     <TextView
         android:id="@+id/eventCategory"
         android:layout_width="wrap_content"
@@ -109,7 +107,7 @@
         tools:text="Event Category"
         tools:textSize="14sp" />
 
-    <!--A text component for description title -->
+    <!--A text component for description -->
     <TextView
         android:id="@+id/Description"
         android:layout_width="175dp"
@@ -136,7 +134,8 @@
         tools:textSize="14sp"/>
 
     <!--A button Component for booking tickets.
-    Button click navigates to BookTickets UI.  -->
+   Button click navigates to BookTickets UI.
+   Except for the case that event is SOLD OUT.-->
     <Button
         android:id="@+id/tickets"
         android:layout_width="150dp"
@@ -155,6 +154,8 @@
         android:textSize="20dp"
         android:textColor="@color/white" />
 
+
+    <!-- A back button that navigates to previous page.-->
     <ImageButton
         android:id="@+id/backButton"
         android:layout_width="34dp"

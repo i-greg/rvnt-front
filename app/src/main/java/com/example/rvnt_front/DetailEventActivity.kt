@@ -99,7 +99,7 @@ class DetailEventActivity : AppCompatActivity() {
 
         }
 
-        //
+        // Listener for back button
         val back = binding.backButton
 
         back.setOnClickListener {

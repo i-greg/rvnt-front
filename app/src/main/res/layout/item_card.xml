@@ -9,6 +9,8 @@
     android:layout_margin="5dp"
     android:id="@+id/cardView">
 
+    <!-- A CardView for RecyclerView in HomeActivity that displays
+    all categories of events [music, art, food festival, cinema ...].-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,6 +18,8 @@
         android:orientation="vertical"
         android:background="@color/white">
 
+
+        <!-- Create Image Component for event's image-->
         <ImageView
             android:src="@mipmap/ic_launcher_round"
             android:scaleType="centerCrop"
@@ -24,12 +28,14 @@
             android:layout_height="125dp"
             android:contentDescription="TODO" />
 
+
+        <!-- Create TextView for Category's name-->
         <TextView
             android:textColor="#F57C00"
             android:padding="5dp"
             android:layout_margin="5dp"
             android:textSize="16sp"
-            android:text="Event Name"
+            android:text="Category Name"
             android:textStyle="bold"
             android:id="@+id/tv_eventTitle"
             android:layout_width="wrap_content"

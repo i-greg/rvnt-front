@@ -8,7 +8,24 @@
     android:background="@drawable/message_shape"
     >
 
-    <!-- A TextView Component for success ticket's reservation -->
+    <!-- A pop up message for successfully tickets' booking.
+     It appears on Book button click.-->
+
+    <!-- A success-check icon. -->
+    <ImageView
+        android:id="@+id/successIcon"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:layout_marginStart="118dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="118dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/check_button_foreground" />
+
+
+    <!-- A TextView Component for success ticket's reservation-->
     <TextView
         android:id="@+id/successMessage"
         android:layout_width="340dp"
@@ -26,20 +43,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- A success-check icon. -->
-    <ImageView
-        android:id="@+id/successIcon"
-        android:layout_width="175dp"
-        android:layout_height="175dp"
-        android:layout_marginStart="118dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="118dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/check_button_foreground" />
 
-    <!-- A textView to inform for payment email -->
+
+    <!-- A textView to inform for payment's email send.-->
     <TextView
         android:id="@+id/paymentMessage"
         android:layout_width="300dp"
@@ -59,6 +65,9 @@
         app:layout_constraintTop_toBottomOf="@+id/successMessage" />
 
 
+    <!-- An OK button in order to ensure that user's information
+    about successfully tickets' booking and payment procedure.
+    On button click, pop up message dismiss.-->
     <Button
 
         android:id="@+id/okButton"

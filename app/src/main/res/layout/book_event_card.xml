@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- A cardview for the List with the event's details. -->
+<!-- A CardView for RecyclerView in BookTicketsActivity that displays
+the information [date[i], time[i]. place, price] for an event.-->
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/bookEventCard"
@@ -9,16 +10,15 @@
     android:layout_gravity="center_horizontal"
     android:layout_margin="5dp"
     android:padding="5dp"
-
     app:cardCornerRadius="15dp">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:gravity="center_horizontal"
         android:orientation="vertical">
+
 
         <!-- A textView for event's date  -->
         <TextView
@@ -34,6 +34,7 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
+
         <!-- A textView for event's time-->
         <TextView
             android:id="@+id/eventTime"
@@ -46,9 +47,8 @@
             android:textAlignment="center"
             android:textColor="@color/app_orange" />
 
-        <!-- A textView for event's place-->
 
-        <!-- A textView for ticket's price-->
+        <!-- A textView for event's place-->
         <TextView
             android:id="@+id/eventPlace"
             android:layout_width="wrap_content"
@@ -63,11 +63,13 @@
             android:textStyle="bold|italic" />
 
 
+        <!-- A Layout for ticket's price-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal">
 
+            <!-- A textView for ticket's price-->
             <TextView
                 android:id="@+id/ticketPrice"
                 android:layout_width="wrap_content"
@@ -77,6 +79,7 @@
                 android:text="price"
                 android:textAlignment="center" />
 
+            <!-- A textView for euro icon.-->
             <TextView
                 android:id="@+id/coinIcon"
                 android:layout_width="wrap_content"
